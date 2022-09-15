@@ -33,29 +33,21 @@ public class PlayerController : MonoBehaviour
     void Move(float horizontal, float vertical)
     {
         rb.velocity = new Vector3(horizontal, 0, vertical) * speed;
-        if (horizontal >= 0)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            if (vertical > 0)
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            else if (vertical < 0)
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
         }
-        else if (horizontal < 0)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            if (vertical > 0)
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-            }
-            else if (vertical < 0)
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-            }
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
         }
 
     }
