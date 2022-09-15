@@ -35,19 +35,19 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(horizontal, 0, vertical) * speed;
         if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            rb.rotation = Quaternion.Euler(0, 0, 0);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            rb.rotation = Quaternion.Euler(0, 180, 0);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
+            rb.rotation = Quaternion.Euler(0, -90, 0);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            rb.rotation = Quaternion.Euler(0, 90, 0);
         }
 
     }
