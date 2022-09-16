@@ -8,6 +8,7 @@ public class NpcMove : MonoBehaviour
     [SerializeField] float delayTime;
     [SerializeField] float speedTime;
     [SerializeField] Animator anim;
+    [SerializeField] float firstRotY;
     bool isMoving;
     Rigidbody rb;
     float firstSpeed;
@@ -33,31 +34,39 @@ public class NpcMove : MonoBehaviour
     {
         speed = 0;
         anim.SetInteger("animState", 0);
+
         yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
-        rb.rotation = Quaternion.Euler(0, 0, 0);
+        rb.rotation = Quaternion.Euler(0, firstRotY, 0);
+
         yield return new WaitForSeconds(speedTime);
         speed = 0;
         anim.SetInteger("animState", 0);
+
         yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
-        rb.rotation = Quaternion.Euler(0, 180, 0);
+        rb.rotation = Quaternion.Euler(0, firstRotY - 180, 0);
+
         yield return new WaitForSeconds(speedTime);
         speed = 0;
         anim.SetInteger("animState", 0);
+
         yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
-        rb.rotation = Quaternion.Euler(0, 0, 0);
+        rb.rotation = Quaternion.Euler(0, firstRotY, 0);
+
         yield return new WaitForSeconds(speedTime);
         speed = 0;
         anim.SetInteger("animState", 0);
+
         yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
-        rb.rotation = Quaternion.Euler(0, 180, 0);
+        rb.rotation = Quaternion.Euler(0, firstRotY - 180, 0);
+
         yield return new WaitForSeconds(speedTime);
         isMoving = false;
     }
