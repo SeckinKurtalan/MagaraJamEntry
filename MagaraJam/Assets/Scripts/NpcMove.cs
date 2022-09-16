@@ -9,10 +9,14 @@ public class NpcMove : MonoBehaviour
     [SerializeField] float speedTime;
     [SerializeField] Animator anim;
     [SerializeField] float firstRotY;
+    [SerializeField] float knockBackPower;
+    [SerializeField] float knockBackTime;
     bool isMoving;
     Rigidbody rb;
     float firstSpeed;
     bool isHurt;
+    bool isForceEnd;
+    Vector3 dir;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +29,18 @@ public class NpcMove : MonoBehaviour
     void Update()
     {
         rb.velocity = transform.forward * speed;
-        if (!isMoving)
+        if (!isMoving && !isHurt)
         {
             isMoving = true;
-            StartCoroutine(Move());
+            StartCoroutine("Move");
+        }
+        else if (isHurt)
+        {
+            if (!isForceEnd)
+            {
+                rb.AddForce(dir.normalized * knockBackPower, ForceMode.Impulse);
+            }
+
         }
     }
     IEnumerator Move()
@@ -71,4 +83,27 @@ public class NpcMove : MonoBehaviour
         yield return new WaitForSeconds(speedTime);
         isMoving = false;
     }
+    public void TakeDamage(Transform playerPos)
+    {
+        StopCoroutine("Move");
+        isForceEnd = false;
+        rb.velocity = Vector3.zero;
+        anim.SetInteger("animState", 1);
+        dir = transform.position - playerPos.position;
+        dir.y = 0;
+        speed = 0;
+        isHurt = true;
+        StartCoroutine(Hurt());
+    }
+    IEnumerator Hurt()
+    {
+        yield return new WaitForSeconds(knockBackTime);
+        isForceEnd = true;
+        anim.SetInteger("animState", 0);
+        yield return new WaitForSeconds(2f);
+        isHurt = false;
+        isMoving = false;
+        isForceEnd = false;
+    }
+
 }

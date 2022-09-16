@@ -103,6 +103,11 @@ public class PlayerControllerPatched : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(1);
         }
+        Collider[] npcler = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("NPC"));
+        foreach (Collider npc in npcler)
+        {
+            npc.GetComponent<NpcMove>().TakeDamage(transform);
+        }
     }
     private void OnDrawGizmos()
     {

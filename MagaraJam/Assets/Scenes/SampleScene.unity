@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 774046472}
   - component: {fileID: 774046471}
   - component: {fileID: 774046470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Npc Female
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,6 +963,8 @@ MonoBehaviour:
   speedTime: 2
   anim: {fileID: 330995395}
   firstRotY: 90
+  knockBackPower: 40
+  knockBackTime: 0.1
 --- !u!136 &774046472
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2277,7 +2279,7 @@ GameObject:
   - component: {fileID: 1380303713}
   - component: {fileID: 1380303718}
   - component: {fileID: 1380303717}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Npc Male
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2347,6 +2349,8 @@ MonoBehaviour:
   speedTime: 3
   anim: {fileID: 683638743}
   firstRotY: 0
+  knockBackPower: 40
+  knockBackTime: 0.1
 --- !u!1 &1390455635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a2b1f8022a95bfb46a34b5ff565761be, type: 3}
