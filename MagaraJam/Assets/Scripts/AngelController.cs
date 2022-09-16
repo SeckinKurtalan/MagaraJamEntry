@@ -8,6 +8,7 @@ public class AngelController : MonoBehaviour
     [SerializeField] float swordRange;
     [SerializeField] Transform swordPos;
     [SerializeField] GameObject playerHead;
+    [SerializeField] ParticleSystem particle;
     [SerializeField] AudioClip attackSound;
     [SerializeField] Animator anim;
     AudioSource audioSource;
@@ -20,6 +21,7 @@ public class AngelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        particle.Stop();
         enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
@@ -68,6 +70,7 @@ public class AngelController : MonoBehaviour
     }
     void Attack(Collider[] player)
     {
+        particle.Play();
         attackTime = Time.time + 2f;
         StartCoroutine(AttackTimer(player));
 
