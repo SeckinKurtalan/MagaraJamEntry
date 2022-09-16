@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerPatched : MonoBehaviour
 {
+
+
     [SerializeField] float speed;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
@@ -106,4 +108,7 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(swordPos.position, attackRange);
     }
+
+
+
 }
