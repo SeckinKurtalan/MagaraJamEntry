@@ -36,7 +36,9 @@ public class PlayerControllerPatched : MonoBehaviour
     }
     void Move(float horizontal, float vertical)
     {
-        rb.velocity = new Vector3(horizontal, 0, vertical) * speed;
+
+        rb.velocity = new Vector3(horizontal * speed, rb.velocity.y, vertical * speed);
+
         if (rb.velocity != Vector3.zero)
         {
             anim.SetInteger("animState", 1);
