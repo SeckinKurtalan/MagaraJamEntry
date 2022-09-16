@@ -12,6 +12,7 @@ public class NpcMove : MonoBehaviour
     bool isMoving;
     Rigidbody rb;
     float firstSpeed;
+    bool isHurt;
 
     // Start is called before the first frame update
     void Start()

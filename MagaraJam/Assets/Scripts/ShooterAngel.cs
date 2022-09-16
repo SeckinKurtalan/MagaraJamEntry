@@ -8,6 +8,7 @@ public class ShooterAngel : MonoBehaviour
     [SerializeField] float attackSpeed;
     [SerializeField] GameObject playerHead;
     [SerializeField] AudioClip attackSound;
+    [SerializeField] Animator anim;
     float attackTime;
     [SerializeField] PlayerHealth playerHealth;
     AudioSource audioSource;
@@ -56,6 +57,7 @@ public class ShooterAngel : MonoBehaviour
     }
     IEnumerator AttackDelay()
     {
+        anim.SetTrigger("attack");
         yield return new WaitForSeconds(0.5f);
         bool hit = Physics.Raycast(transform.position, transform.forward, attackRange, LayerMask.GetMask("Player"));
         if (hit)

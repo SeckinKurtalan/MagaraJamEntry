@@ -9,6 +9,7 @@ public class AngelController : MonoBehaviour
     [SerializeField] Transform swordPos;
     [SerializeField] GameObject playerHead;
     [SerializeField] AudioClip attackSound;
+    [SerializeField] Animator anim;
     AudioSource audioSource;
     Enemy enemy;
     Rigidbody rb;
@@ -73,6 +74,7 @@ public class AngelController : MonoBehaviour
     }
     IEnumerator AttackTimer(Collider[] hitPlayer)
     {
+        anim.SetTrigger("attack");
         yield return new WaitForSeconds(.5f);
         if (hitPlayer.Length > 0)
         {
