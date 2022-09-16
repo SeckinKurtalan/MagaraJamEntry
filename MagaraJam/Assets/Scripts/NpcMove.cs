@@ -6,6 +6,7 @@ public class NpcMove : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float delayTime;
+    [SerializeField] float speedTime;
     [SerializeField] Animator anim;
     bool isMoving;
     Rigidbody rb;
@@ -36,28 +37,28 @@ public class NpcMove : MonoBehaviour
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
         rb.rotation = Quaternion.Euler(0, 0, 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(speedTime);
         speed = 0;
         anim.SetInteger("animState", 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
         rb.rotation = Quaternion.Euler(0, 180, 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(speedTime);
         speed = 0;
         anim.SetInteger("animState", 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
         rb.rotation = Quaternion.Euler(0, 0, 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(speedTime);
         speed = 0;
         anim.SetInteger("animState", 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(delayTime);
         anim.SetInteger("animState", 1);
         speed = firstSpeed;
         rb.rotation = Quaternion.Euler(0, 180, 0);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(speedTime);
         isMoving = false;
     }
 }
