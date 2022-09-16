@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
+    [SerializeField] float attackDelay;
     [SerializeField] Transform swordPos;
+    [SerializeField] Animator anim;
     float attackTime;
     Rigidbody rb;
 
@@ -33,27 +35,67 @@ public class PlayerController : MonoBehaviour
     void Move(float horizontal, float vertical)
     {
         rb.velocity = new Vector3(horizontal, 0, vertical) * speed;
-        if (Input.GetKeyDown(KeyCode.D))
+        if (rb.velocity != Vector3.zero)
         {
+            anim.SetInteger("animState", 1);
+        }
+        else
+        {
+            anim.SetInteger("animState", 0);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+
             rb.rotation = Quaternion.Euler(0, 0, 0);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             rb.rotation = Quaternion.Euler(0, 180, 0);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            rb.rotation = Quaternion.Euler(0, -90, 0);
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.rotation = Quaternion.Euler(0, -45, 0);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                rb.rotation = Quaternion.Euler(0, -135, 0);
+            }
+            else
+            {
+                rb.rotation = Quaternion.Euler(0, -90, 0);
+
+            }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            rb.rotation = Quaternion.Euler(0, 90, 0);
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.rotation = Quaternion.Euler(0, 45, 0);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                rb.rotation = Quaternion.Euler(0, 135, 0);
+            }
+            else
+            {
+                rb.rotation = Quaternion.Euler(0, 90, 0);
+            }
+
+
         }
 
     }
     void Attack()
     {
         attackTime = Time.time + 1 / attackSpeed;
+        anim.SetTrigger("attack");
+        StartCoroutine(AttackDelay());
+    }
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(attackDelay);
         Collider[] enemies = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Enemy"));
         foreach (Collider enemy in enemies)
         {

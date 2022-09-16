@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Enemy : MonoBehaviour
     {
         audioSource.PlayOneShot(hurtSound);
         health -= damage;
+        if (health <= 0 && !isDead)
+        {
+            KillEnemy();
+        }
         enemiesSpeed = enemiesSpeed * -1.5f;
         StartCoroutine(ResetSpeed());
     }
@@ -34,10 +39,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0 && !isDead)
-        {
-            KillEnemy();
-        }
+
     }
     private void KillEnemy()
     {

@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class AngelController : MonoBehaviour
 {
     [SerializeField] float attackRange;
+    [SerializeField] float swordRange;
+    [SerializeField] Transform swordPos;
     [SerializeField] GameObject playerHead;
     [SerializeField] AudioClip attackSound;
     AudioSource audioSource;
@@ -11,6 +14,8 @@ public class AngelController : MonoBehaviour
     Rigidbody rb;
     bool isRange;
     Vector3 direction;
+    float attackTime;
+    bool isAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +41,15 @@ public class AngelController : MonoBehaviour
                 isRange = true;
 
             }
-            rb.velocity = directionNorm * enemy.enemiesSpeed;
+            if (!isAttack)
+            {
+                rb.velocity = directionNorm * enemy.enemiesSpeed;
+
+            }
+            else
+            {
+                rb.velocity = -directionNorm * enemy.enemiesSpeed;
+            }
 
         }
         else
@@ -45,6 +58,36 @@ public class AngelController : MonoBehaviour
             rb.velocity = Vector2.zero;
 
         }
+        Collider[] hitPlayer = Physics.OverlapSphere(swordPos.position, swordRange, LayerMask.GetMask("Player"));
+
+        if (hitPlayer.Length > 0 && Time.time > attackTime)
+        {
+            Attack(hitPlayer);
+        }
+    }
+    void Attack(Collider[] player)
+    {
+        attackTime = Time.time + 2f;
+        StartCoroutine(AttackTimer(player));
+
+    }
+    IEnumerator AttackTimer(Collider[] hitPlayer)
+    {
+        yield return new WaitForSeconds(.5f);
+        if (hitPlayer.Length > 0)
+        {
+            hitPlayer[0].GetComponent<PlayerHealth>().UpdateHealth(1);
+            Debug.Log(hitPlayer.Length);
+
+        }
+        isAttack = true;
+        yield return new WaitForSeconds(1f);
+        isAttack = false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(swordPos.position, swordRange);
     }
 
 
