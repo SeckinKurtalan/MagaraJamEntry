@@ -14,11 +14,15 @@ public class PlayerControllerPatched : MonoBehaviour
     [SerializeField] Animator anim;
     float attackTime;
     Rigidbody rb;
+    PlayerSound soundSc;
+    bool isOnStone;
+    bool isWalk;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        soundSc = GetComponent<PlayerSound>();
     }
 
     // Update is called once per frame
@@ -34,18 +38,41 @@ public class PlayerControllerPatched : MonoBehaviour
         }
 
     }
+    IEnumerator Walk()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (isOnStone)
+        {
+            soundSc.stoneStepSound();
+        }
+        else
+        {
+            soundSc.PlaneStepSound();
+        }
+        isWalk = false;
+    }
     void Move(float horizontal, float vertical)
     {
 
         rb.velocity = new Vector3(horizontal * speed, rb.velocity.y, vertical * speed);
 
-        if (rb.velocity != Vector3.zero)
+        if (rb.velocity != new Vector3(0, rb.velocity.y, 0))
         {
             anim.SetInteger("animState", 1);
+            if (!isWalk)
+            {
+                isWalk = true;
+                StartCoroutine("Walk");
+
+            }
+
         }
         else
         {
             anim.SetInteger("animState", 0);
+            soundSc.StopStepSound();
+            StopCoroutine("Walk");
+            isWalk = false;
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -95,6 +122,7 @@ public class PlayerControllerPatched : MonoBehaviour
     {
         attackTime = Time.time + 1 / attackSpeed;
         anim.SetTrigger("attack");
+        soundSc.AttackSound();
         StartCoroutine(AttackDelay());
     }
     IEnumerator AttackDelay()
@@ -114,6 +142,17 @@ public class PlayerControllerPatched : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(swordPos.position, attackRange);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Stone")
+        {
+            isOnStone = true;
+        }
+        if (collision.gameObject.tag == "Plane")
+        {
+            isOnStone = false;
+        }
     }
 
 
