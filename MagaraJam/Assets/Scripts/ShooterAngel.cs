@@ -37,6 +37,7 @@ public class ShooterAngel : MonoBehaviour
                 transform.LookAt(playerHead.transform.position);
 
             }
+
             if (direction.magnitude <= attackRange)
             {
                 if (!isRange)
