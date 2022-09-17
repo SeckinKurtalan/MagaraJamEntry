@@ -11,7 +11,7 @@ public class PlayerControllerPatched : MonoBehaviour
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
     [SerializeField] float attackDelay;
-    // [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem particle;
     [SerializeField] Transform swordPos;
     [SerializeField] Animator anim;
     float attackTime;
@@ -24,7 +24,7 @@ public class PlayerControllerPatched : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // particle.Stop();
+        particle.Stop();
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
     }
@@ -128,7 +128,7 @@ public class PlayerControllerPatched : MonoBehaviour
     }
     void Attack()
     {
-        // particle.Play();
+        particle.Play();
         attackTime = Time.time + 1 / attackSpeed;
         anim.SetTrigger("attack");
         soundSc.AttackSound();
