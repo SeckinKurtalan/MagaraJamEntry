@@ -1075,7 +1075,7 @@ MonoBehaviour:
   speedTime: 2
   anim: {fileID: 330995395}
   firstRotY: 90
-  knockBackPower: 40
+  knockBackPower: 50
   knockBackTime: 0.1
 --- !u!136 &774046472
 CapsuleCollider:
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   speedTime: 3
   anim: {fileID: 683638743}
   firstRotY: 0
-  knockBackPower: 40
+  knockBackPower: 50
   knockBackTime: 0.1
 --- !u!1 &1390455635 stripped
 GameObject:

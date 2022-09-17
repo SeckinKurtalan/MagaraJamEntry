@@ -28,7 +28,7 @@ public class NpcMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.forward * speed;
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
         if (!isMoving && !isHurt)
         {
             isMoving = true;
