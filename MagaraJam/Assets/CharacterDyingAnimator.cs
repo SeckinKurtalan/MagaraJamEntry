@@ -5,11 +5,11 @@ using UnityEngine;
 public class CharacterDyingAnimator : MonoBehaviour
 {
 
-    [SerializeField] GameObject enemy;    
-    
-    
+    [SerializeField] GameObject enemy;
+
+
     public void KillEnemy()
     {
-        enemy.SetActive(false);
+        Destroy(enemy);
     }
 }

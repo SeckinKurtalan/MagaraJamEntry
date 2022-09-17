@@ -11,18 +11,21 @@ public class NpcMove : MonoBehaviour
     [SerializeField] float firstRotY;
     [SerializeField] float knockBackPower;
     [SerializeField] float knockBackTime;
+    [SerializeField] AudioClip hurtSound;
     bool isMoving;
     Rigidbody rb;
     float firstSpeed;
     bool isHurt;
     bool isForceEnd;
     Vector3 dir;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         firstSpeed = speed;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -85,6 +88,7 @@ public class NpcMove : MonoBehaviour
     }
     public void TakeDamage(Transform playerPos)
     {
+        audioSource.PlayOneShot(hurtSound);
         StopCoroutine("Move");
         isForceEnd = false;
         rb.velocity = Vector3.zero;
@@ -101,6 +105,7 @@ public class NpcMove : MonoBehaviour
         isForceEnd = true;
         anim.SetInteger("animState", 0);
         yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
         isHurt = false;
         isMoving = false;
         isForceEnd = false;

@@ -31,41 +31,44 @@ public class AngelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = playerHead.transform.position - transform.position;
-        Vector3 directionNorm = direction.normalized;
-
-        transform.LookAt(playerHead.transform.position);
-
-        if (direction.magnitude < attackRange)
+        if (!enemy.isDead)
         {
-            if (!isRange)
-            {
-                audioSource.PlayOneShot(attackSound);
-                isRange = true;
+            direction = playerHead.transform.position - transform.position;
+            Vector3 directionNorm = direction.normalized;
 
-            }
-            if (!isAttack)
+            transform.LookAt(playerHead.transform.position);
+
+            if (direction.magnitude < attackRange)
             {
-                rb.velocity = directionNorm * enemy.enemiesSpeed;
+                if (!isRange)
+                {
+                    audioSource.PlayOneShot(attackSound);
+                    isRange = true;
+
+                }
+                if (!isAttack)
+                {
+                    rb.velocity = directionNorm * enemy.enemiesSpeed;
+
+                }
+                else
+                {
+                    rb.velocity = -directionNorm * enemy.enemiesSpeed;
+                }
 
             }
             else
             {
-                rb.velocity = -directionNorm * enemy.enemiesSpeed;
+                isRange = false;
+                rb.velocity = Vector2.zero;
+
             }
+            Collider[] hitPlayer = Physics.OverlapSphere(swordPos.position, swordRange, LayerMask.GetMask("Player"));
 
-        }
-        else
-        {
-            isRange = false;
-            rb.velocity = Vector2.zero;
-
-        }
-        Collider[] hitPlayer = Physics.OverlapSphere(swordPos.position, swordRange, LayerMask.GetMask("Player"));
-
-        if (hitPlayer.Length > 0 && Time.time > attackTime)
-        {
-            Attack(hitPlayer);
+            if (hitPlayer.Length > 0 && Time.time > attackTime)
+            {
+                Attack(hitPlayer);
+            }
         }
     }
     void Attack(Collider[] player)
@@ -86,7 +89,7 @@ public class AngelController : MonoBehaviour
 
         }
         isAttack = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         isAttack = false;
     }
     private void OnDrawGizmosSelected()

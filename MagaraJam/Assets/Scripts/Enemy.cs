@@ -7,17 +7,17 @@ public class Enemy : MonoBehaviour
 {
 
 
-    
+
     [SerializeField] Animator enemyAnim;
 
     public float health;
     [SerializeField] AudioClip hurtSound;
     public float enemiesSpeed;
     public float firstSpeed;
-    bool isDead;
+    public bool isDead;
     AudioSource audioSource;
-     
-    
+
+
     private void Start()
     {
         firstSpeed = enemiesSpeed;
@@ -26,14 +26,17 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        audioSource.PlayOneShot(hurtSound);
-        health -= damage;
-        if (health <= 0 && !isDead)
+        if (!isDead)
         {
-            KillEnemy();
+            health -= damage;
+            if (health <= 0)
+            {
+                KillEnemy();
+            }
+            audioSource.PlayOneShot(hurtSound);
+            enemiesSpeed = enemiesSpeed * -3f;
+            StartCoroutine(ResetSpeed());
         }
-        enemiesSpeed = enemiesSpeed * -1.5f;
-        StartCoroutine(ResetSpeed());
     }
     IEnumerator ResetSpeed()
     {
@@ -47,6 +50,7 @@ public class Enemy : MonoBehaviour
     private void KillEnemy()
     {
         enemyAnim.SetTrigger("Death");
+        isDead = true;
     }
 
 }

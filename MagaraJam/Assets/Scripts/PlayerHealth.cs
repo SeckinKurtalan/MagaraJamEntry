@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class PlayerHealth : MonoBehaviour
     {
         soundSc.HurtSound();
         health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
         healthText.text = "Health: " + health.ToString();
         Physics.IgnoreLayerCollision(6, 3);
         StartCoroutine(ResetCollision());
@@ -30,6 +35,10 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Physics.IgnoreLayerCollision(6, 3, false);
+    }
+    void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

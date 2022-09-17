@@ -17,7 +17,8 @@ public class PlayerControllerPatched : MonoBehaviour
     float attackTime;
     Rigidbody rb;
     PlayerSound soundSc;
-    bool isOnStone;
+    int isOnStone;
+
     bool isWalk;
 
     // Start is called before the first frame update
@@ -44,13 +45,17 @@ public class PlayerControllerPatched : MonoBehaviour
     IEnumerator Walk()
     {
         yield return new WaitForSeconds(0.25f);
-        if (isOnStone)
+        if (isOnStone == 0)
         {
             soundSc.stoneStepSound();
         }
-        else
+        else if (isOnStone == 1)
         {
             soundSc.PlaneStepSound();
+        }
+        else
+        {
+            soundSc.StopStepSound();
         }
         isWalk = false;
     }
@@ -147,17 +152,29 @@ public class PlayerControllerPatched : MonoBehaviour
     {
         Gizmos.DrawWireSphere(swordPos.position, attackRange);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Stone")
         {
-            isOnStone = true;
+            isOnStone = 2;
         }
         if (collision.gameObject.tag == "Plane")
         {
-            isOnStone = false;
+            isOnStone = 2;
         }
     }
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "Stone")
+        {
+            isOnStone = 0;
+        }
+        if (other.gameObject.tag == "Plane")
+        {
+            isOnStone = 1;
+        }
+    }
+
 
 
 
