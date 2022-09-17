@@ -131,12 +131,12 @@ public class PlayerControllerPatched : MonoBehaviour
     {
         attackTime = Time.time + 1 / attackSpeed;
         anim.SetTrigger("attack");
-        soundSc.AttackSound();
         StartCoroutine(AttackDelay());
     }
     IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(attackDelay);
+        soundSc.AttackSound();
         Collider[] enemies = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Enemy"));
         foreach (Collider enemy in enemies)
         {
