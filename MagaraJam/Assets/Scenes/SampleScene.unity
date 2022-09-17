@@ -4133,8 +4133,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c2f63f91642f804b9d4c4443e19b3f8, type: 3}
   - {fileID: 8300000, guid: c71fc5aa3eaaaa7489290a2f36511710, type: 3}
   dieSound: {fileID: 8300000, guid: 3268fe94fd918fd44bd12fea01cd3ebf, type: 3}
-  stoneWalkSound: {fileID: 8300000, guid: 164897dbd3353d2489cd6a9887967387, type: 3}
-  planeWalkSound: {fileID: 8300000, guid: 0ef8890d4902cc149a1a1e307883b19b, type: 3}
+  stoneWalkSound:
+  - {fileID: 8300000, guid: 0ef8890d4902cc149a1a1e307883b19b, type: 3}
+  - {fileID: 8300000, guid: 474dd2893f839e442a51ac32d81f2e4f, type: 3}
+  planeWalkSound:
+  - {fileID: 8300000, guid: 83ead0cea190b394394cc8f4054d2f15, type: 3}
+  - {fileID: 8300000, guid: 16264bea72bb7a843a0cdd5ba6b99677, type: 3}
   fallSound: {fileID: 0}
 --- !u!1 &1304989852
 GameObject:
@@ -6739,11 +6743,23 @@ PrefabInstance:
     - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: hurtSound
       value: 
-      objectReference: {fileID: 8300000, guid: 83512ca1870f98c4da16ce2038e6d6b8, type: 3}
+      objectReference: {fileID: 8300000, guid: 14576d16d1eadfd409c8ba5cd4b61c09, type: 3}
     - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 997e8d0eada02f54aa5b900050ab8e3d, type: 3}
+    - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: hurtSound.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: hurtSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bef3ff088334604d80b181144952d75, type: 3}
+    - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: hurtSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 14576d16d1eadfd409c8ba5cd4b61c09, type: 3}
     - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: particle
       value: 
@@ -6759,11 +6775,27 @@ PrefabInstance:
     - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: attackSound
       value: 
-      objectReference: {fileID: 8300000, guid: bd9f35eca9e71344885a604276bc1412, type: 3}
+      objectReference: {fileID: 8300000, guid: b1fb6fd592d1d9744a3ed6c61aa776d8, type: 3}
     - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1224657073}
+    - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: attackSound.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: attackSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b1fb6fd592d1d9744a3ed6c61aa776d8, type: 3}
+    - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: attackSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dd8a2f4ceec0c1148a5fdef0d76fd4f7, type: 3}
+    - target: {fileID: 2081130834711277578, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
+      propertyPath: attackSound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 915d7c788d4482049b12c1e8cbbf7b62, type: 3}
     - target: {fileID: 2081130834711277579, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.95
@@ -6929,7 +6961,23 @@ PrefabInstance:
     - target: {fileID: 8689710520839161305, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: attackSound
       value: 
-      objectReference: {fileID: 8300000, guid: bd9f35eca9e71344885a604276bc1412, type: 3}
+      objectReference: {fileID: 8300000, guid: dd8a2f4ceec0c1148a5fdef0d76fd4f7, type: 3}
+    - target: {fileID: 8689710520839161305, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: attackSound.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689710520839161305, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: attackSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b1fb6fd592d1d9744a3ed6c61aa776d8, type: 3}
+    - target: {fileID: 8689710520839161305, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: attackSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dd8a2f4ceec0c1148a5fdef0d76fd4f7, type: 3}
+    - target: {fileID: 8689710520839161305, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: attackSound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 915d7c788d4482049b12c1e8cbbf7b62, type: 3}
     - target: {fileID: 8689710520839161316, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.95
@@ -6981,11 +7029,23 @@ PrefabInstance:
     - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: hurtSound
       value: 
-      objectReference: {fileID: 8300000, guid: 83512ca1870f98c4da16ce2038e6d6b8, type: 3}
+      objectReference: {fileID: 8300000, guid: 8bef3ff088334604d80b181144952d75, type: 3}
     - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 997e8d0eada02f54aa5b900050ab8e3d, type: 3}
+    - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: hurtSound.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: hurtSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bef3ff088334604d80b181144952d75, type: 3}
+    - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
+      propertyPath: hurtSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 14576d16d1eadfd409c8ba5cd4b61c09, type: 3}
     - target: {fileID: 8689710520839161326, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: m_Name
       value: MeleeAngel

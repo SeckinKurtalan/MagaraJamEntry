@@ -41,6 +41,8 @@ public class GodMechanics : MonoBehaviour
 
     [SerializeField] Material Level2Material;
 
+    [SerializeField] GodSound godSound;
+
     [SerializeField] PlayerControllerForGod playerTouchControllerScript;
 
     private bool damageNotGiven = true;
@@ -92,6 +94,7 @@ public class GodMechanics : MonoBehaviour
         shootingAnimLevel1.Play();
         shootingAnim1Level1.Play();
         shootingAnim2Level1.Play();
+        godSound.lazerSoundPlay();
         animActive = true;
         yield return new WaitForSecondsRealtime(3f);
         Redzone1.SetActive(false);
@@ -116,6 +119,7 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level2.Play();
         shootingAnim3Level2.Play();
         shootingAnim4Level2.Play();
+        godSound.lazerSoundPlay();
         animActive = true;
         yield return new WaitForSecondsRealtime(3f);
         damageNotGiven = true;

@@ -9,9 +9,10 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] AudioClip[] attackSound;
     [SerializeField] AudioClip[] hurtSound;
     [SerializeField] AudioClip dieSound;
-    [SerializeField] AudioClip stoneWalkSound;
-    [SerializeField] AudioClip planeWalkSound;
+    [SerializeField] AudioClip[] stoneWalkSound;
+    [SerializeField] AudioClip[] planeWalkSound;
     [SerializeField] AudioClip fallSound;
+    private int i = 0; 
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,9 @@ public class PlayerSound : MonoBehaviour
     }
     public void stoneStepSound()
     {
-        walkSource.PlayOneShot(stoneWalkSound);
+        i++;
+        if (i == 2) { i = 0; }
+        walkSource.PlayOneShot(stoneWalkSound[i]);
     }
     public void StopStepSound()
     {
@@ -40,8 +43,10 @@ public class PlayerSound : MonoBehaviour
     }
     public void PlaneStepSound()
     {
+        i++;
+        if (i == 2) { i = 0; }
+        walkSource.PlayOneShot(planeWalkSound[i]);
 
-        walkSource.PlayOneShot(planeWalkSound);
     }
     public void FallSound()
     {
