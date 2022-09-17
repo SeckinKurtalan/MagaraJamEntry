@@ -60,6 +60,7 @@ public class GodMechanics : MonoBehaviour
     public void Update()
     {
         TouchStatusApplier();
+        Debug.Log(redzoneTouchStatus);
     }
 
     public void GodAttackLevel1()
