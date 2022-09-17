@@ -82,12 +82,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f0661672a45a54681665fac8cc7185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
   enemyAnim: {fileID: 2081130834888174370}
   health: 2
   hurtSound: {fileID: 0}
   enemiesSpeed: 0
   firstSpeed: 0
   isDead: 0
+  isHurt: 0
 --- !u!114 &2081130834711277578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +105,7 @@ MonoBehaviour:
   attackRange: 35
   attackSpeed: 3
   playerHead: {fileID: 0}
+  particle: {fileID: 0}
   attackSound: {fileID: 0}
   anim: {fileID: 2081130834888174370}
   playerHealth: {fileID: 0}
@@ -435,21 +438,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2081130833563134570}
     m_Modifications:
+    - target: {fileID: 2939260985283651081, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964398575, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964398575, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964398575, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startSpeed.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389982668987, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389982668987, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.72
+      objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.3
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54.61
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.9
+      value: -34.2
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalRotation.w
@@ -482,6 +525,22 @@ PrefabInstance:
     - target: {fileID: 3029471389982982343, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_Name
       value: MagicBuffYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389983043935, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029807681798363563, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3033819671551853335, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3033819671551853335, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
