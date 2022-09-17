@@ -51,6 +51,8 @@ public class GodMechanics : MonoBehaviour
 
     int holdNumber = 10;
 
+    ParticleSystem level3Anim;
+    
     void Start()
     {
         shootingAnimLevel1.Stop();
@@ -143,13 +145,25 @@ public class GodMechanics : MonoBehaviour
                 }    
             }
             level3Areas[random].SetActive(true);
+            StartCoroutine(timer(random));
             holdNumber = random;
         }
 
-        
-    
     }
     
+    
+    IEnumerator timer(int random)
+    {
+        yield return new WaitForSeconds(3f);
+        level3Areas[random].transform.Find("NukeExplosionFire").gameObject.SetActive(true);
+        if (redzoneTouchStatus)
+        {
+            GiveDamageToTheMainCharacter();
+        }
+        yield return new WaitForSeconds(1f);
+        level3Areas[random].SetActive(false);
+
+    }
     
     void TouchStatusApplier()
     {
