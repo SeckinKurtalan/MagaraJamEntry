@@ -27,7 +27,7 @@ public class PlayerControllerPatched : MonoBehaviour
         particle.Stop();
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
-        
+
     }
 
     // Update is called once per frame
@@ -129,7 +129,6 @@ public class PlayerControllerPatched : MonoBehaviour
     }
     void Attack()
     {
-        particle.Play();
         attackTime = Time.time + 1 / attackSpeed;
         anim.SetTrigger("attack");
         soundSc.AttackSound();
@@ -148,6 +147,8 @@ public class PlayerControllerPatched : MonoBehaviour
         {
             npc.GetComponent<NpcMove>().TakeDamage(transform);
         }
+        yield return new WaitForSeconds(.4f);
+        particle.Play();
     }
     private void OnDrawGizmos()
     {

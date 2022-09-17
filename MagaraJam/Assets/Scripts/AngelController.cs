@@ -74,7 +74,6 @@ public class AngelController : MonoBehaviour
     }
     void Attack(Collider[] player)
     {
-        particle.Play();
         attackTime = Time.time + 2f;
         StartCoroutine(AttackTimer(player));
 
@@ -83,6 +82,7 @@ public class AngelController : MonoBehaviour
     {
         anim.SetTrigger("attack");
         yield return new WaitForSeconds(.5f);
+        particle.Play();
         if (hitPlayer.Length > 0)
         {
             hitPlayer[0].GetComponent<PlayerHealth>().UpdateHealth(1);

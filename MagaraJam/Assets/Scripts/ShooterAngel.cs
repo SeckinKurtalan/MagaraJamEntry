@@ -72,6 +72,7 @@ public class ShooterAngel : MonoBehaviour
         {
             playerHealth.UpdateHealth(1);
         }
+        yield return new WaitForSeconds(0.5f);
         isAttack = false;
     }
 }
