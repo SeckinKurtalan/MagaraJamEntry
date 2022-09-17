@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Physics.IgnoreLayerCollision(6, 3, false);
     }
-    void Die()
+    public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

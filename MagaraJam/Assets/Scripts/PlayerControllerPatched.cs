@@ -27,6 +27,7 @@ public class PlayerControllerPatched : MonoBehaviour
         // particle.Stop();
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
+        
     }
 
     // Update is called once per frame

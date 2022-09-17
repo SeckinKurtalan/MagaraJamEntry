@@ -37,6 +37,7 @@ public class AngelController : MonoBehaviour
             Vector3 directionNorm = direction.normalized;
 
             transform.LookAt(playerHead.transform.position);
+            transform.rotation = Quaternion.Euler(30, transform.rotation.eulerAngles.y, 0);
 
             if (direction.magnitude < attackRange)
             {
@@ -65,7 +66,7 @@ public class AngelController : MonoBehaviour
             }
             Collider[] hitPlayer = Physics.OverlapSphere(swordPos.position, swordRange, LayerMask.GetMask("Player"));
 
-            if (hitPlayer.Length > 0 && Time.time > attackTime)
+            if (hitPlayer.Length > 0 && Time.time > attackTime && !enemy.isHurt)
             {
                 Attack(hitPlayer);
             }
