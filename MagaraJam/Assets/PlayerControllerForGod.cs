@@ -1,33 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
-public class PlayerControllerPatched : MonoBehaviour
+public class PlayerControllerForGod : MonoBehaviour
 {
-
-
     [SerializeField] float speed;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
     [SerializeField] float attackDelay;
-    [SerializeField] ParticleSystem particle;
+    // [SerializeField] ParticleSystem particle;
     [SerializeField] Transform swordPos;
     [SerializeField] Animator anim;
     float attackTime;
     Rigidbody rb;
     PlayerSound soundSc;
-    int isOnStone;
-
+    bool isOnStone;
     bool isWalk;
 
     // Start is called before the first frame update
     void Start()
     {
-        particle.Stop();
+        // particle.Stop();
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
-        
     }
 
     // Update is called once per frame
@@ -46,17 +41,13 @@ public class PlayerControllerPatched : MonoBehaviour
     IEnumerator Walk()
     {
         yield return new WaitForSeconds(0.25f);
-        if (isOnStone == 0)
+        if (isOnStone)
         {
             soundSc.stoneStepSound();
         }
-        else if (isOnStone == 1)
-        {
-            soundSc.PlaneStepSound();
-        }
         else
         {
-            soundSc.StopStepSound();
+            soundSc.PlaneStepSound();
         }
         isWalk = false;
     }
@@ -79,36 +70,20 @@ public class PlayerControllerPatched : MonoBehaviour
         else
         {
             anim.SetInteger("animState", 0);
-            soundSc.StopStepSound();
+            //soundSc.StopStepSound();
             StopCoroutine("Walk");
             isWalk = false;
         }
         if (Input.GetKey(KeyCode.D))
         {
 
-            rb.rotation = Quaternion.Euler(0, 0, 0);
+            rb.rotation = Quaternion.Euler(0, 90, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.rotation = Quaternion.Euler(0, 180, 0);
+            rb.rotation = Quaternion.Euler(0, 270, 0);
         }
         if (Input.GetKey(KeyCode.W))
-        {
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.rotation = Quaternion.Euler(0, -45, 0);
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                rb.rotation = Quaternion.Euler(0, -135, 0);
-            }
-            else
-            {
-                rb.rotation = Quaternion.Euler(0, -90, 0);
-
-            }
-        }
-        if (Input.GetKey(KeyCode.S))
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -116,11 +91,27 @@ public class PlayerControllerPatched : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                rb.rotation = Quaternion.Euler(0, 135, 0);
+                rb.rotation = Quaternion.Euler(0, 315, 0);
             }
             else
             {
-                rb.rotation = Quaternion.Euler(0, 90, 0);
+                rb.rotation = Quaternion.Euler(0, 0, 0);
+
+            }
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.rotation = Quaternion.Euler(0, 135, 0);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                rb.rotation = Quaternion.Euler(0, 225, 0);
+            }
+            else
+            {
+                rb.rotation = Quaternion.Euler(0, 180, 0);
             }
 
 
@@ -129,7 +120,7 @@ public class PlayerControllerPatched : MonoBehaviour
     }
     void Attack()
     {
-        particle.Play();
+        // particle.Play();
         attackTime = Time.time + 1 / attackSpeed;
         anim.SetTrigger("attack");
         soundSc.AttackSound();
@@ -153,30 +144,15 @@ public class PlayerControllerPatched : MonoBehaviour
     {
         Gizmos.DrawWireSphere(swordPos.position, attackRange);
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Stone")
         {
-            isOnStone = 2;
+            isOnStone = true;
         }
         if (collision.gameObject.tag == "Plane")
         {
-            isOnStone = 2;
+            isOnStone = false;
         }
     }
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.tag == "Stone")
-        {
-            isOnStone = 0;
-        }
-        if (other.gameObject.tag == "Plane")
-        {
-            isOnStone = 1;
-        }
-    }
-
-
-
-
 }
