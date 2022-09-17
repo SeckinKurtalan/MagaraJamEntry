@@ -105,10 +105,10 @@ public class NpcMove : MonoBehaviour
         isForceEnd = true;
         anim.SetInteger("animState", 0);
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
         isHurt = false;
         isMoving = false;
         isForceEnd = false;
+        audioSource.Stop();
     }
 
 }

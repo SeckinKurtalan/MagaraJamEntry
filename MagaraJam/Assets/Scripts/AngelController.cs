@@ -8,7 +8,7 @@ public class AngelController : MonoBehaviour
     [SerializeField] float swordRange;
     [SerializeField] Transform swordPos;
     [SerializeField] GameObject playerHead;
-    // [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem particle;
     [SerializeField] AudioClip attackSound;
     [SerializeField] Animator anim;
     AudioSource audioSource;
@@ -21,7 +21,7 @@ public class AngelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // particle.Stop();
+        particle.Stop();
         enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
@@ -37,6 +37,7 @@ public class AngelController : MonoBehaviour
             Vector3 directionNorm = direction.normalized;
 
             transform.LookAt(playerHead.transform.position);
+            transform.rotation = Quaternion.Euler(30, transform.rotation.eulerAngles.y, 0);
 
             if (direction.magnitude < attackRange)
             {
@@ -65,7 +66,7 @@ public class AngelController : MonoBehaviour
             }
             Collider[] hitPlayer = Physics.OverlapSphere(swordPos.position, swordRange, LayerMask.GetMask("Player"));
 
-            if (hitPlayer.Length > 0 && Time.time > attackTime)
+            if (hitPlayer.Length > 0 && Time.time > attackTime && !enemy.isHurt)
             {
                 Attack(hitPlayer);
             }
@@ -73,7 +74,6 @@ public class AngelController : MonoBehaviour
     }
     void Attack(Collider[] player)
     {
-        // particle.Play();
         attackTime = Time.time + 2f;
         StartCoroutine(AttackTimer(player));
 
@@ -82,6 +82,7 @@ public class AngelController : MonoBehaviour
     {
         anim.SetTrigger("attack");
         yield return new WaitForSeconds(.5f);
+        particle.Play();
         if (hitPlayer.Length > 0)
         {
             hitPlayer[0].GetComponent<PlayerHealth>().UpdateHealth(1);
