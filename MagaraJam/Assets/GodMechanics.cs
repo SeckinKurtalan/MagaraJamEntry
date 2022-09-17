@@ -20,9 +20,12 @@ public class GodMechanics : MonoBehaviour
     public UnityEvent shootingEvent;
 
     public float time;
-    
+
+    public Material myMaterial1;
+
     void Start()
     {
+        InvokeRepeating("GodAttackLevel1", 4f,6f);
         shootingAnim.Stop();
         shootingAnim1.Stop();
         shootingAnim2.Stop();
@@ -32,25 +35,33 @@ public class GodMechanics : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            shootingEvent.Invoke();
-        }
+    
     }
 
-    public void GodAttack()
+    public void GodAttackLevel1()
     {
-        StartCoroutine(GodPunch());
+        StartCoroutine(GodPunchLevel1());
     }
     
-    IEnumerator GodPunch()
+    IEnumerator GodPunchLevel1()
     {
-        animator.SetTrigger("GodPunch"); ;
+
+        Color color = myMaterial1.color;
+        color.a = 0.8f;
+        myMaterial1.color = color;
+        animator.SetTrigger("GodPunch"); 
         yield return new WaitForSecondsRealtime(time);
+        color.a = 0f;
+        myMaterial1.color = color;
         shootingAnim.Play();
         shootingAnim1.Play();
         shootingAnim2.Play();
+        
+        
     }
    
+
+
+    
 
 }
