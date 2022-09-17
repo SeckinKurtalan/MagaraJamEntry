@@ -14,6 +14,7 @@ public class ShooterAngel : MonoBehaviour
     [SerializeField] PlayerHealth playerHealth;
     AudioSource audioSource;
     Vector3 direction;
+    Enemy enemy;
     bool isRange;
     bool isAttack;
     // Start is called before the first frame update
@@ -21,34 +22,38 @@ public class ShooterAngel : MonoBehaviour
     {
         // particle.Stop();
         audioSource = GetComponent<AudioSource>();
+        enemy = GetComponent<Enemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = playerHead.transform.position - transform.position;
-        Debug.DrawRay(transform.position, transform.forward * attackRange, Color.red);
-        if (!isAttack)
+        if (!enemy.isDead)
         {
-            transform.LookAt(playerHead.transform.position);
-
-        }
-        if (direction.magnitude <= attackRange)
-        {
-            if (!isRange)
+            direction = playerHead.transform.position - transform.position;
+            Debug.DrawRay(transform.position, transform.forward * attackRange, Color.red);
+            if (!isAttack)
             {
-                isRange = true;
-                audioSource.PlayOneShot(attackSound);
-            }
-            if (Time.time > attackTime)
-            {
-                Attack();
-            }
+                transform.LookAt(playerHead.transform.position);
 
-        }
-        else
-        {
-            isRange = false;
+            }
+            if (direction.magnitude <= attackRange)
+            {
+                if (!isRange)
+                {
+                    isRange = true;
+                    audioSource.PlayOneShot(attackSound);
+                }
+                if (Time.time > attackTime)
+                {
+                    Attack();
+                }
+
+            }
+            else
+            {
+                isRange = false;
+            }
         }
     }
     void Attack()

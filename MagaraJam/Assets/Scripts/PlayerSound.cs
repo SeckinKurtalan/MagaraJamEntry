@@ -32,7 +32,7 @@ public class PlayerSound : MonoBehaviour
     }
     public void stoneStepSound()
     {
-        walkSource.PlayOneShot(stoneWalkSound, .2f);
+        walkSource.PlayOneShot(stoneWalkSound, .4f);
     }
     public void StopStepSound()
     {
@@ -41,7 +41,7 @@ public class PlayerSound : MonoBehaviour
     public void PlaneStepSound()
     {
 
-        walkSource.PlayOneShot(planeWalkSound, .2f);
+        walkSource.PlayOneShot(planeWalkSound, .6f);
     }
     public void FallSound()
     {
