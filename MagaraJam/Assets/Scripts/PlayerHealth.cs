@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     Rigidbody rb;
     PlayerSound soundSc;
-    float health;
+    public float health;
 
     void Start()
     {

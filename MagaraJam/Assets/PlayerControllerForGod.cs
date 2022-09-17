@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControllerForGod : MonoBehaviour
 {
+    public bool touchStatus=false;
     [SerializeField] float speed;
     [SerializeField] float attackRange;
     [SerializeField] float attackSpeed;
@@ -38,6 +39,26 @@ public class PlayerControllerForGod : MonoBehaviour
         }
 
     }
+
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "Redzone")
+        {
+            touchStatus = true;
+        }
+    }
+
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.tag == "Redzone")
+        {
+            touchStatus = false;
+        }
+    }
+
+
     IEnumerator Walk()
     {
         yield return new WaitForSeconds(0.25f);
@@ -120,7 +141,7 @@ public class PlayerControllerForGod : MonoBehaviour
     }
     void Attack()
     {
-        // particle.Play();
+        //particle.Play();
         attackTime = Time.time + 1 / attackSpeed;
         anim.SetTrigger("attack");
         soundSc.AttackSound();

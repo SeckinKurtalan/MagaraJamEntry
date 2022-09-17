@@ -5,37 +5,61 @@ using UnityEngine.Events;
 public class GodMechanics : MonoBehaviour
 {
 
+    [SerializeField] PlayerHealth playerHealtScript;
+    
     [SerializeField] GameObject god;
 
-    bool isClicked = false;
+    [SerializeField] GameObject Redzone1;
+
+    [SerializeField] GameObject Redzone2;
+
+    bool redzoneTouchStatus = false;
 
     [SerializeField] Animator animator;
 
-    [SerializeField] ParticleSystem shootingAnim;
+    [SerializeField] ParticleSystem shootingAnimLevel1;
 
-    [SerializeField] ParticleSystem shootingAnim1;
+    [SerializeField] ParticleSystem shootingAnim1Level1;
 
-    [SerializeField] ParticleSystem shootingAnim2;
+    [SerializeField] ParticleSystem shootingAnim2Level1;
+
+    [SerializeField] ParticleSystem shootingAnimLevel2;
+
+    [SerializeField] ParticleSystem shootingAnim1Level2;
+
+    [SerializeField] ParticleSystem shootingAnim2Level2;
+    
+    [SerializeField] ParticleSystem shootingAnim3Level2;
+
+    [SerializeField] ParticleSystem shootingAnim4Level2;
 
     public UnityEvent shootingEvent;
 
     public float time;
 
-    public Material myMaterial1;
+    [SerializeField] Material Level1Material;
 
+    [SerializeField] Material Level2Material;
+
+    [SerializeField] PlayerControllerForGod playerTouchControllerScript;
+    
     void Start()
     {
-        InvokeRepeating("GodAttackLevel1", 4f,6f);
-        shootingAnim.Stop();
-        shootingAnim1.Stop();
-        shootingAnim2.Stop();
-
+        shootingAnimLevel1.Stop();
+        shootingAnim1Level1.Stop();
+        shootingAnim2Level1.Stop();
+        shootingAnimLevel2.Stop();
+        shootingAnim1Level2.Stop();
+        shootingAnim2Level2.Stop();
+        shootingAnim3Level2.Stop();
+        shootingAnim4Level2.Stop();
+        Invoke("GodAttackLevel1", 4f);
     }
 
 
-    void Update()
+    public void Update()
     {
-    
+        TouchStatusApplier();
     }
 
     public void GodAttackLevel1()
@@ -43,25 +67,70 @@ public class GodMechanics : MonoBehaviour
         StartCoroutine(GodPunchLevel1());
     }
     
+    
+    public void GodAttackLevel2()
+    {
+        StartCoroutine(GodPunchLevel2());
+    }
+    
     IEnumerator GodPunchLevel1()
     {
 
-        Color color = myMaterial1.color;
+        Redzone1.SetActive(true);
+        Color color = Level1Material.color;
         color.a = 0.8f;
-        myMaterial1.color = color;
-        animator.SetTrigger("GodPunch"); 
+        Level1Material.color = color;
+        animator.SetTrigger("GodPunch");
         yield return new WaitForSecondsRealtime(time);
+        TouchStatusControl();
         color.a = 0f;
-        myMaterial1.color = color;
-        shootingAnim.Play();
-        shootingAnim1.Play();
-        shootingAnim2.Play();
-        
-        
+        Level1Material.color = color;
+        shootingAnimLevel1.Play();
+        shootingAnim1Level1.Play();
+        shootingAnim2Level1.Play();
+        yield return new WaitForSecondsRealtime(3f);
+        Redzone1.SetActive(false);
+        yield return new WaitForSecondsRealtime(5f);
+        GodAttackLevel2();
     }
    
-
+    IEnumerator GodPunchLevel2()
+    {
+        Redzone2.SetActive(true);
+        Color color = Level2Material.color;
+        color.a = 0.8f;
+        Level2Material.color = color;
+        animator.SetTrigger("GodPunch");
+        yield return new WaitForSecondsRealtime(time);
+        TouchStatusControl();
+        color.a = 0f;
+        Level2Material.color = color;
+        shootingAnimLevel2.Play();
+        shootingAnim1Level2.Play();
+        shootingAnim2Level2.Play();
+        shootingAnim3Level2.Play();
+        shootingAnim4Level2.Play();
+        yield return new WaitForSecondsRealtime(3f);
+        Redzone2.SetActive(false);
+    }
 
     
+    void TouchStatusApplier()
+    {
+        redzoneTouchStatus = playerTouchControllerScript.touchStatus;
+    }
+
+    void GiveDamageToTheMainCharacter()
+    {
+        playerHealtScript.UpdateHealth(1f);
+    }
+
+    void TouchStatusControl()
+    {
+        if (redzoneTouchStatus)
+        {
+            GiveDamageToTheMainCharacter();
+        }
+    }
 
 }
