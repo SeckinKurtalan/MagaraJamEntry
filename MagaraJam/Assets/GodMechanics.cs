@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class GodMechanics : MonoBehaviour
 {
 
+    [SerializeField] GameObject[] level3Areas;
+    
     [SerializeField] PlayerHealth playerHealtScript;
     
     [SerializeField] GameObject god;
@@ -46,7 +48,9 @@ public class GodMechanics : MonoBehaviour
     private bool damageNotGiven = true;
 
     private bool animActive = false;
-    
+
+    int holdNumber = 10;
+
     void Start()
     {
         shootingAnimLevel1.Stop();
@@ -121,8 +125,31 @@ public class GodMechanics : MonoBehaviour
         damageNotGiven = true;
         animActive = false;
         Redzone2.SetActive(false);
+        yield return new WaitForSecondsRealtime(4f);
+        GodPunchLevel3();
     }
 
+    
+    void GodPunchLevel3()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            int random = Random.Range(0, level3Areas.Length);
+            if(holdNumber == random)
+            {
+                while(holdNumber == random)
+                {
+                    random = Random.Range(0, level3Areas.Length);
+                }    
+            }
+            level3Areas[random].SetActive(true);
+            holdNumber = random;
+        }
+
+        
+    
+    }
+    
     
     void TouchStatusApplier()
     {
