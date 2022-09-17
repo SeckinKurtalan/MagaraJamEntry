@@ -9,7 +9,7 @@ public class AngelController : MonoBehaviour
     [SerializeField] Transform swordPos;
     [SerializeField] GameObject playerHead;
     [SerializeField] ParticleSystem particle;
-    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip[] attackSound;
     [SerializeField] Animator anim;
     AudioSource audioSource;
     Enemy enemy;
@@ -18,6 +18,7 @@ public class AngelController : MonoBehaviour
     Vector3 direction;
     float attackTime;
     bool isAttack;
+    private int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,9 @@ public class AngelController : MonoBehaviour
             {
                 if (!isRange)
                 {
-                    audioSource.PlayOneShot(attackSound);
+                    i++;
+                    if (i == 2) { i = 0; }
+                    audioSource.PlayOneShot(attackSound[i]);
                     isRange = true;
 
                 }

@@ -8,7 +8,7 @@ public class ShooterAngel : MonoBehaviour
     [SerializeField] float attackSpeed;
     [SerializeField] GameObject playerHead;
     [SerializeField] ParticleSystem particle;
-    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip[] attackSound;
     [SerializeField] Animator anim;
     float attackTime;
     [SerializeField] PlayerHealth playerHealth;
@@ -17,6 +17,7 @@ public class ShooterAngel : MonoBehaviour
     Enemy enemy;
     bool isRange;
     bool isAttack;
+    private int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,9 @@ public class ShooterAngel : MonoBehaviour
                 if (!isRange)
                 {
                     isRange = true;
-                    audioSource.PlayOneShot(attackSound);
+                    i++;
+                    if (i== 2) { i = 0; }
+                    audioSource.PlayOneShot(attackSound[i]);
                 }
                 if (Time.time > attackTime)
                 {

@@ -10,12 +10,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip deathSound;
     [SerializeField] Animator enemyAnim;
     public float health;
-    [SerializeField] AudioClip hurtSound;
+    [SerializeField] AudioClip[] hurtSound;
     public float enemiesSpeed;
     public float firstSpeed;
     public bool isDead;
     AudioSource audioSource;
     public bool isHurt;
+    private int i = 0;
 
 
     private void Start()
@@ -35,7 +36,9 @@ public class Enemy : MonoBehaviour
             {
                 KillEnemy();
             }
-            audioSource.PlayOneShot(hurtSound);
+            i++;
+            if (i == 2) { i = 0;}
+            audioSource.PlayOneShot(hurtSound[i]);
             enemiesSpeed = enemiesSpeed * -2f;
             StartCoroutine(ResetSpeed());
         }
