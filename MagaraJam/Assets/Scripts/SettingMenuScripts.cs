@@ -25,9 +25,9 @@ public class SettingMenuScripts : MonoBehaviour
         mainMixer.SetFloat("volume", volume);
     }
 
-    public void StartTheGame()
+    public void StartTheGame(string sceneName)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneName);
     }
 
 }

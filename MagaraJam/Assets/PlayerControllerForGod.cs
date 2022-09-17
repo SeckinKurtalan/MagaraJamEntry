@@ -40,6 +40,25 @@ public class PlayerControllerForGod : MonoBehaviour
 
     }
 
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "Redzone")
+        {
+            touchStatus = true;
+        }
+    }
+
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.tag == "Redzone")
+        {
+            touchStatus = false;
+        }
+    }
+
+
     IEnumerator Walk()
     {
         yield return new WaitForSeconds(0.25f);
@@ -156,28 +175,5 @@ public class PlayerControllerForGod : MonoBehaviour
         {
             isOnStone = false;
         }
-        
-        if (collision.gameObject.tag == "Redzone")
-        {
-            touchStatus = true;
-        }
     }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Redzone")
-        {
-            touchStatus = true;
-        }
-    }
-
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag == "Redzone")
-        {
-            touchStatus = false;
-        }
-    }
-
 }

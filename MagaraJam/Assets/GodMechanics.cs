@@ -42,6 +42,10 @@ public class GodMechanics : MonoBehaviour
     [SerializeField] Material Level2Material;
 
     [SerializeField] PlayerControllerForGod playerTouchControllerScript;
+
+    private bool damageNotGiven = true;
+
+    private bool animActive = false;
     
     void Start()
     {
@@ -60,7 +64,7 @@ public class GodMechanics : MonoBehaviour
     public void Update()
     {
         TouchStatusApplier();
-        Debug.Log(redzoneTouchStatus);
+        TouchStatusControl();
     }
 
     public void GodAttackLevel1()
@@ -83,15 +87,17 @@ public class GodMechanics : MonoBehaviour
         Level1Material.color = color;
         animator.SetTrigger("GodPunch");
         yield return new WaitForSecondsRealtime(time);
-        TouchStatusControl();
         color.a = 0f;
         Level1Material.color = color;
         shootingAnimLevel1.Play();
         shootingAnim1Level1.Play();
         shootingAnim2Level1.Play();
+        animActive = true;
         yield return new WaitForSecondsRealtime(3f);
         Redzone1.SetActive(false);
         yield return new WaitForSecondsRealtime(5f);
+        damageNotGiven = true;
+        animActive = false;
         GodAttackLevel2();
     }
    
@@ -103,7 +109,6 @@ public class GodMechanics : MonoBehaviour
         Level2Material.color = color;
         animator.SetTrigger("GodPunch");
         yield return new WaitForSecondsRealtime(time);
-        TouchStatusControl();
         color.a = 0f;
         Level2Material.color = color;
         shootingAnimLevel2.Play();
@@ -111,7 +116,10 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level2.Play();
         shootingAnim3Level2.Play();
         shootingAnim4Level2.Play();
+        animActive = true;
         yield return new WaitForSecondsRealtime(3f);
+        damageNotGiven = true;
+        animActive = false;
         Redzone2.SetActive(false);
     }
 
@@ -124,11 +132,12 @@ public class GodMechanics : MonoBehaviour
     void GiveDamageToTheMainCharacter()
     {
         playerHealtScript.UpdateHealth(1f);
+        damageNotGiven = false;
     }
 
     void TouchStatusControl()
     {
-        if (redzoneTouchStatus)
+        if (redzoneTouchStatus && damageNotGiven && animActive)
         {
             GiveDamageToTheMainCharacter();
         }
