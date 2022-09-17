@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] TextMeshProUGUI healthText;
     Rigidbody rb;
+    //public HealthBar healthBar;
     PlayerSound soundSc;
     public float health;
 
@@ -17,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
         health = maxHealth;
+        //healthBar.SetMaxHealth(maxHealth);
         healthText.text = "Health: " + health.ToString();
     }
     public void UpdateHealth(float damage)
@@ -28,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
         healthText.text = "Health: " + health.ToString();
+        //healthBar.SetHealth(health);
         Physics.IgnoreLayerCollision(6, 3);
         StartCoroutine(ResetCollision());
     }
