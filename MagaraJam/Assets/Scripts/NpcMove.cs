@@ -11,7 +11,7 @@ public class NpcMove : MonoBehaviour
     [SerializeField] float firstRotY;
     [SerializeField] float knockBackPower;
     [SerializeField] float knockBackTime;
-    [SerializeField] AudioClip hurtSound;
+    [SerializeField] AudioClip[] hurtSound;
     bool isMoving;
     Rigidbody rb;
     float firstSpeed;
@@ -88,7 +88,7 @@ public class NpcMove : MonoBehaviour
     }
     public void TakeDamage(Transform playerPos)
     {
-        audioSource.PlayOneShot(hurtSound);
+        audioSource.PlayOneShot(hurtSound[Random.Range(0, hurtSound.Length)]);
         StopCoroutine("Move");
         isForceEnd = false;
         rb.velocity = Vector3.zero;
