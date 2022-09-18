@@ -6,12 +6,14 @@ public class GodMechanics : MonoBehaviour
 {
 
     bool isGodDead = false;
+
+    [SerializeField] GameObject FinalArea;
     
     [SerializeField] GameObject[] level3Areas;
 
     [SerializeField] GameObject[] level5Areas;
 
-    [SerializeField] PlayerHealth playerHealtScript;
+    [SerializeField] PlayerHealthForGod playerHealtScript;
     
     [SerializeField] GameObject god;
 
@@ -69,11 +71,37 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level2.Stop();
         shootingAnim3Level2.Stop();
         shootingAnim4Level2.Stop();
-        InvokeRepeating("RandomAttack", 2f,5f);
-        
+
+        Invoke("RandomAttack", 2f);
+        Invoke("RandomAttack", 8f);
+        Invoke("RandomAttack", 14f);
+        Invoke("RandomAttack", 20f);
+        Invoke("RandomAttack", 26f);
+        Invoke("RandomAttack", 32f);
+        Invoke("RandomAttack", 38f);
+        Invoke("RandomAttack", 44f);
+        Invoke("StartFinalAttack", 50f);
+
     }
 
 
+    void StartFinalAttack() {
+
+        StartCoroutine(FinalAttack());
+    }
+
+    
+    IEnumerator FinalAttack()
+    {
+        FinalArea.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        FinalArea.transform.Find("NukeExplosionFire").gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        playerHealtScript.Die();
+    }
+    
+    
+    
     void RandomAttack()
     {
         int random = Random.Range(0, 5);

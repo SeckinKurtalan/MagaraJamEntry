@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
-
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthForGod : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject God;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject GameOverPanel;
     [SerializeField] float maxHealth;
     Rigidbody rb;
     public HealthBar healthBar;
@@ -38,10 +40,9 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Die()
     {
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("TheEndScene");
     }
-
-
-
+    
+    
 
 }

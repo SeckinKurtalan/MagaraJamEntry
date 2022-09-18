@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathArea : MonoBehaviour
+public class DeathAreaForGod : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
