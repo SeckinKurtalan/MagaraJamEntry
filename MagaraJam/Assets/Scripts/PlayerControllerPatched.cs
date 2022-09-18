@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
+using TMPro;
 
 public class PlayerControllerPatched : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class PlayerControllerPatched : MonoBehaviour
     [SerializeField] ParticleSystem particle;
     [SerializeField] Transform swordPos;
     [SerializeField] Animator anim;
+    [SerializeField] TextMeshProUGUI npcText;
+    [SerializeField] TextMeshProUGUI angelText;
+    [SerializeField] GameObject[] tasks;
+    [SerializeField] GameObject gate;
+    float NPCcount;
+    float angelCount;
     float attackTime;
     float garryTime;
     Rigidbody rb;
@@ -21,6 +28,7 @@ public class PlayerControllerPatched : MonoBehaviour
     int isOnStone;
 
     bool isWalk;
+    int taskCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +37,14 @@ public class PlayerControllerPatched : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
         garryTime = 4;
+        npcText.text = NPCcount.ToString();
+        angelText.text = angelCount.ToString();
 
+    }
+    public void AngelCountFunc()
+    {
+        angelCount++;
+        angelText.text = angelCount.ToString();
     }
 
     // Update is called once per frame
@@ -39,7 +54,7 @@ public class PlayerControllerPatched : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Move(horizontalInput, verticalInput);
-        if (Input.GetMouseButtonDown(0) && Time.time > attackTime)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && Time.time > attackTime)
         {
             Attack();
         }
@@ -47,6 +62,20 @@ public class PlayerControllerPatched : MonoBehaviour
         {
             soundSc.GarrySound();
             garryTime = Time.time + 15;
+        }
+        if (angelCount >= 20)
+        {
+            taskCounter++;
+            tasks[1].SetActive(false);
+        }
+        if (NPCcount >= 30)
+        {
+            taskCounter++;
+            tasks[0].SetActive(false);
+        }
+        if (taskCounter == 2)
+        {
+            gate.SetActive(false);
         }
 
     }
@@ -153,6 +182,8 @@ public class PlayerControllerPatched : MonoBehaviour
         foreach (Collider npc in npcler)
         {
             npc.GetComponent<NpcMove>().TakeDamage(transform);
+            NPCcount++;
+            npcText.text = NPCcount.ToString();
         }
         Collider[] vases = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Vase"));
         foreach (Collider vase in vases)

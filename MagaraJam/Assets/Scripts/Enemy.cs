@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Animator enemyAnim;
     public float health;
     [SerializeField] AudioClip[] hurtSound;
+    PlayerControllerPatched player;
     public float enemiesSpeed;
     public float firstSpeed;
     public bool isDead;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     {
         firstSpeed = enemiesSpeed;
         audioSource = GetComponent<AudioSource>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerControllerPatched>();
     }
 
     public void TakeDamage(float damage)
@@ -37,7 +39,7 @@ public class Enemy : MonoBehaviour
                 KillEnemy();
             }
             i++;
-            if (i == 2) { i = 0;}
+            if (i == 2) { i = 0; }
             audioSource.PlayOneShot(hurtSound[i]);
             enemiesSpeed = enemiesSpeed * -2f;
             StartCoroutine(ResetSpeed());
@@ -55,6 +57,7 @@ public class Enemy : MonoBehaviour
 
     private void KillEnemy()
     {
+        player.AngelCountFunc();
         audioSource.PlayOneShot(deathSound);
         enemyAnim.SetTrigger("Death");
         isDead = true;
