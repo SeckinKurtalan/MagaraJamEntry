@@ -8,7 +8,7 @@ public class ShooterAngel : MonoBehaviour
     [SerializeField] float attackSpeed;
     [SerializeField] GameObject playerHead;
     [SerializeField] ParticleSystem particle;
-    [SerializeField] AudioClip[] attackSound;
+    [SerializeField] AudioClip attackSound;
     [SerializeField] AudioClip hitSound;
     [SerializeField] Animator anim;
     float attackTime;
@@ -45,9 +45,7 @@ public class ShooterAngel : MonoBehaviour
                 if (!isRange)
                 {
                     isRange = true;
-                    i++;
-                    if (i == 2) { i = 0; }
-                    audioSource.PlayOneShot(attackSound[i]);
+                    //audioSource.PlayOneShot(attackSound);
                 }
                 if (Time.time > attackTime)
                 {
@@ -64,6 +62,8 @@ public class ShooterAngel : MonoBehaviour
     void Attack()
     {
         particle.Play();
+        isRange = true;
+        audioSource.PlayOneShot(attackSound);
         attackTime = Time.time + attackSpeed;
         isAttack = true;
         StartCoroutine(AttackDelay());
