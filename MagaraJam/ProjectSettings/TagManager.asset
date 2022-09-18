@@ -8,6 +8,9 @@ TagManager:
   - Stone
   - Redzone
   - Angel1
+  - Angel2
+  - Angel3
+  - Angel4
   layers:
   - Default
   - TransparentFX

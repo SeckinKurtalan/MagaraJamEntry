@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2081130834711277581}
   m_Layer: 3
   m_Name: ShooterAngel
-  m_TagString: Untagged
+  m_TagString: Angel1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,10 +82,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f0661672a45a54681665fac8cc7185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: b22ce5187062d244dadfc4d5d6617053, type: 3}
   enemyAnim: {fileID: 2081130834888174370}
   health: 2
-  hurtSound: {fileID: 0}
+  hurtSound:
+  - {fileID: 8300000, guid: 8bef3ff088334604d80b181144952d75, type: 3}
+  - {fileID: 8300000, guid: 14576d16d1eadfd409c8ba5cd4b61c09, type: 3}
   enemiesSpeed: 0
   firstSpeed: 0
   isDead: 0
@@ -102,11 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91da1a490b68f4f42bfae388b78a7919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 35
+  attackRange: 55
   attackSpeed: 3
   playerHead: {fileID: 0}
-  particle: {fileID: 0}
-  attackSound: {fileID: 0}
+  particle: {fileID: 1626913259219933693}
+  attackSound: {fileID: 8300000, guid: bd9f35eca9e71344885a604276bc1412, type: 3}
+  hitSound: {fileID: 8300000, guid: 3cf8b111a81a8d64eb650353b8a9fe31, type: 3}
   anim: {fileID: 2081130834888174370}
   playerHealth: {fileID: 0}
 --- !u!54 &2081130834711277576
@@ -181,7 +184,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.95
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -455,20 +458,36 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: InitialModule.startSize.minScalar
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: ClampVelocityModule.magnitude.scalar
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: InitialModule.startSpeed.minMaxState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982668987, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.y
@@ -484,15 +503,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 175
+      value: 85.8
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -34.2
+      value: -23.3
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalRotation.w
@@ -544,6 +563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+--- !u!198 &1626913259219933693 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
+  m_PrefabInstance: {fileID: 4366570589740368420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1626913259234057127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3029471389982677379, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
