@@ -153,17 +153,12 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level1.Play();
         godSound.lazerSoundPlay();
         animActive = true;
-        yield return new WaitForSecondsRealtime(1f);
-        if (redzoneTouchStatus)
-        {
-            playerHealtScript.Die();
-        }
         yield return new WaitForSecondsRealtime(3f);
-        Redzone1.SetActive(false);
         //yield return new WaitForSecondsRealtime(5f);
         damageNotGiven = true;
         animActive = false;
         redzoneTouchStatus = false;
+        Redzone1.SetActive(false);
         //GodAttackLevel2();
     }
    
@@ -184,16 +179,12 @@ public class GodMechanics : MonoBehaviour
         shootingAnim3Level2.Play();
         shootingAnim4Level2.Play();
         godSound.lazerSoundPlay();
-        if (redzoneTouchStatus)
-        {
-            playerHealtScript.Die();
-        }
         animActive = true;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(3f);
         damageNotGiven = true;
         animActive = false;
+        redzoneTouchStatus = false;
         Redzone2.SetActive(false);
-        yield return new WaitForSecondsRealtime(4f);
         //GodAttackLevel3();
     }
 
@@ -294,7 +285,7 @@ public class GodMechanics : MonoBehaviour
     {
         if (redzoneTouchStatus && damageNotGiven && animActive)
         {
-            GiveDamageToTheMainCharacter();
+            playerHealtScript.Die();
         }
     }
 
