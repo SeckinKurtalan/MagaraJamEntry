@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
         health = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
     }
     public void UpdateHealth(float damage)
     {
@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
-        healthBar.SetHealth(health);
+        //healthBar.SetHealth(health);
         Physics.IgnoreLayerCollision(6, 3);
         StartCoroutine(ResetCollision());
     }
