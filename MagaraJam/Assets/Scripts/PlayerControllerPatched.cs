@@ -161,6 +161,13 @@ public class PlayerControllerPatched : MonoBehaviour
             Vector3 direct = vase.transform.position - transform.position;
             vase.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
         }
+        Collider[] barels = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Barrel"));
+        foreach (Collider barel in barels)
+        {
+            soundSc.BarrelSound();
+            Vector3 direct = barel.transform.position - transform.position;
+            barel.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
+        }
         yield return new WaitForSeconds(.4f);
         particle.Play();
     }
