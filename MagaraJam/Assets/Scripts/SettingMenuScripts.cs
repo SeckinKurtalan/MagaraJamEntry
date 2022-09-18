@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class SettingMenuScripts : MonoBehaviour
 {
+    [SerializeField] AudioClip clickSound;
+    [SerializeField] AudioClip buttonSound;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject changeLevel;
+    [SerializeField] Slider slider;
 
-    [SerializeField] AudioMixer mainMixer;
-    
     public void SetFullScreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
@@ -20,14 +24,33 @@ public class SettingMenuScripts : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume()
     {
-        mainMixer.SetFloat("volume", volume);
+        AudioListener.volume = slider.value;
     }
 
-    public void StartTheGame(string sceneName)
+    public void StartTheGame()
     {
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(StartTheGameAfterDelay());
+    }
+    IEnumerator StartTheGameAfterDelay()
+    {
+        changeLevel.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(1);
+
+    }
+    public void ClickSound()
+    {
+        audioSource.PlayOneShot(clickSound);
+    }
+    public void ButtonSound()
+    {
+        audioSource.PlayOneShot(buttonSound);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 
 }
