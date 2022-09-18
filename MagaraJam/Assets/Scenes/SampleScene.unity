@@ -6535,7 +6535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec8079fa11eed674daf73f7216b696e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 285.2
+      value: 285.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec8079fa11eed674daf73f7216b696e3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14300,6 +14300,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 83ead0cea190b394394cc8f4054d2f15, type: 3}
   - {fileID: 8300000, guid: 16264bea72bb7a843a0cdd5ba6b99677, type: 3}
   fallSound: {fileID: 0}
+  vaseBreakSound: {fileID: 0}
   garrySound: {fileID: 0}
 --- !u!1001 &1229536430
 PrefabInstance:
