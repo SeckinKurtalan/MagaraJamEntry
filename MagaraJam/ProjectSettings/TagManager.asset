@@ -13,6 +13,7 @@ TagManager:
   - Angel4
   - coinText
   - HealthImg
+  - "gap\u0131"
   layers:
   - Default
   - TransparentFX
