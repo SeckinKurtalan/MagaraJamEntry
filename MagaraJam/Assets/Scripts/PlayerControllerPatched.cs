@@ -28,6 +28,7 @@ public class PlayerControllerPatched : MonoBehaviour
         particle.Stop();
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
+        garryTime = 4;
 
     }
 
@@ -152,6 +153,13 @@ public class PlayerControllerPatched : MonoBehaviour
         foreach (Collider npc in npcler)
         {
             npc.GetComponent<NpcMove>().TakeDamage(transform);
+        }
+        Collider[] vases = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Vase"));
+        foreach (Collider vase in vases)
+        {
+            soundSc.VaseBreakSound();
+            Vector3 direct = vase.transform.position - transform.position;
+            vase.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
         }
         yield return new WaitForSeconds(.4f);
         particle.Play();

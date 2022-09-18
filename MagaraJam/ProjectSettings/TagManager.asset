@@ -11,6 +11,8 @@ TagManager:
   - Angel2
   - Angel3
   - Angel4
+  - coinText
+  - HealthImg
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - UI
   - Player
   - NPC
-  - 
+  - Vase
   - 
   - 
   - 
