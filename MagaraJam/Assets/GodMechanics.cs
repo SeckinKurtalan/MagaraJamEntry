@@ -107,7 +107,7 @@ public class GodMechanics : MonoBehaviour
     public void Update()
     {
         TouchStatusApplier();
-        //TouchStatusControl();
+        TouchStatusControl();
         
     }
 
@@ -156,7 +156,7 @@ public class GodMechanics : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         if (redzoneTouchStatus)
         {
-            GiveDamageToTheMainCharacter();
+            playerHealtScript.Die();
         }
         yield return new WaitForSecondsRealtime(3f);
         Redzone1.SetActive(false);
@@ -229,8 +229,10 @@ public class GodMechanics : MonoBehaviour
             playerHealtScript.Die();
         }
         yield return new WaitForSeconds(1f);
-        level3Areas[random].SetActive(false);
         level3Areas[random].transform.Find("NukeExplosionFire").gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        level3Areas[random].SetActive(false);
+        redzoneTouchStatus = false;
     }
     
      IEnumerator GodPunchLevel4()
@@ -267,10 +269,12 @@ public class GodMechanics : MonoBehaviour
         {
             playerHealtScript.Die();
         }    
+        
         yield return new WaitForSeconds(1f);
-            level5Areas[random].SetActive(false);
-            level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(false);
-
+        level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        level5Areas[random].SetActive(false);
+        redzoneTouchStatus = false; 
         yield return new WaitForSeconds(6f);
     }
     
