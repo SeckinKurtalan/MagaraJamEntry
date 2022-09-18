@@ -1519,6 +1519,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4900424131137777472, guid: 6cce90220dd5fca4f999ec84f95706e4, type: 3}
+      propertyPath: m_text
+      value: "Se\xE7kin Kurtalan / Developer\nFurkan D\xF6\u011Fer / 3D Artist\nEren
+        Ali Karabay / 3D Artist\nBerkay D\xFClgerbaki / SFX Artist \n\u0130brahim
+        Erenli / UI Artist\nOkan Eskin / Developer\nLara \u015Eahin / 2D Artist\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 6676253674151404904, guid: 6cce90220dd5fca4f999ec84f95706e4, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
       value: 0
