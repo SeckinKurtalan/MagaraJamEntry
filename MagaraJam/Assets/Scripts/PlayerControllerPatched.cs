@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerPatched : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class PlayerControllerPatched : MonoBehaviour
         }
         if (taskCounter == 2)
         {
-            gate.SetActive(false);
+            gate.GetComponent<Collider>().enabled = false;
         }
 
     }
@@ -227,6 +228,14 @@ public class PlayerControllerPatched : MonoBehaviour
         if (other.gameObject.tag == "Plane")
         {
             isOnStone = 1;
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "gapı")
+        {
+            SceneManager.LoadScene("2");
+
         }
     }
 
