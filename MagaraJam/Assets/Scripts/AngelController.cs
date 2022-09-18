@@ -9,7 +9,7 @@ public class AngelController : MonoBehaviour
     [SerializeField] Transform swordPos;
     [SerializeField] GameObject playerHead;
     [SerializeField] ParticleSystem particle;
-    [SerializeField] AudioClip[] attackSound;
+    [SerializeField] AudioClip attackSound;
     [SerializeField] AudioClip[] hitSound;
     [SerializeField] Animator anim;
     AudioSource audioSource;
@@ -45,9 +45,7 @@ public class AngelController : MonoBehaviour
             {
                 if (!isRange)
                 {
-                    i++;
-                    if (i == 2) { i = 0; }
-                    audioSource.PlayOneShot(attackSound[i]);
+                    audioSource.PlayOneShot(attackSound);
                     isRange = true;
 
                 }
