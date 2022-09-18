@@ -13,7 +13,8 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] AudioClip[] planeWalkSound;
     [SerializeField] AudioClip fallSound;
     [SerializeField] AudioClip vaseBreakSound;
-    [SerializeField] AudioClip garrySound;
+    [SerializeField] AudioClip barrelSound;
+    [SerializeField] AudioClip[] garrySound;
     private int i = 0;
     // Start is called before the first frame update
     void Start()
@@ -56,10 +57,15 @@ public class PlayerSound : MonoBehaviour
     }
     public void GarrySound()
     {
-        audioSource.PlayOneShot(garrySound);
+        int random = Random.Range(0, garrySound.Length);
+        audioSource.PlayOneShot(garrySound[random]);
     }
     public void VaseBreakSound()
     {
-        audioSource.PlayOneShot(vaseBreakSound);
+        audioSource.PlayOneShot(vaseBreakSound, .5f);
+    }
+    public void BarrelSound()
+    {
+        audioSource.PlayOneShot(barrelSound, .5f);
     }
 }
