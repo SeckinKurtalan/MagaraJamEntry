@@ -26147,8 +26147,9 @@ MonoBehaviour:
   vaseBreakSound: {fileID: 8300000, guid: cf616405d04fe5049a59601d615aad7b, type: 3}
   barrelSound: {fileID: 8300000, guid: 3bf10aeaf7450ab42b0888d618991f1d, type: 3}
   garrySound:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 27c357d68a4d60d4bbf9e8118f646a38, type: 3}
+  - {fileID: 8300000, guid: c42764e3a0108274592563bc852edbfd, type: 3}
+  - {fileID: 8300000, guid: 0cd516adc823058449ed7abe54c15663, type: 3}
 --- !u!4 &1225867099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5763294134910177851, guid: 7198631446baf114a99b67b540b6bcbf, type: 3}
