@@ -70,23 +70,29 @@ public class AngelController : MonoBehaviour
 
             if (hitPlayer.Length > 0 && Time.time > attackTime && !enemy.isHurt)
             {
-                Attack(hitPlayer);
+                Attack();
+            }
+            else if (enemy.isHurt)
+            {
+                StopCoroutine("AttackTimer");
             }
         }
     }
-    void Attack(Collider[] player)
+    void Attack()
     {
         attackTime = Time.time + 2f;
-        StartCoroutine(AttackTimer(player));
+        StartCoroutine("AttackTimer");
 
     }
-    IEnumerator AttackTimer(Collider[] hitPlayer)
+    IEnumerator AttackTimer()
     {
         anim.SetTrigger("attack");
         int random = Random.Range(0, hitSound.Length);
         audioSource.PlayOneShot(hitSound[random]);
         yield return new WaitForSeconds(.5f);
         particle.Play();
+        Collider[] hitPlayer = Physics.OverlapSphere(swordPos.position, swordRange, LayerMask.GetMask("Player"));
+
         if (hitPlayer.Length > 0)
         {
             hitPlayer[0].GetComponent<PlayerHealth>().UpdateHealth(1);
