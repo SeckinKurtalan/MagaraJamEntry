@@ -12249,6 +12249,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558980682}
   m_CullTransparentMesh: 1
+--- !u!1 &561843859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7930551212775778322, guid: 2d77da2c13e1879439fbe7e16acd80b2, type: 3}
+  m_PrefabInstance: {fileID: 1680595886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &565162157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25703,8 +25708,8 @@ MonoBehaviour:
   npcText: {fileID: 1442032724}
   angelText: {fileID: 2129317206}
   tasks:
-  - {fileID: 1442032721}
-  - {fileID: 2129317205}
+  - {fileID: 561843859}
+  - {fileID: 558980682}
   gate: {fileID: 2001012859}
 --- !u!82 &1224657075
 AudioSource:
