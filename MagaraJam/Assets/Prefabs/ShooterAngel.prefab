@@ -475,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: ClampVelocityModule.magnitude.scalar
@@ -487,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389964426201, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3029471389982668987, guid: 06ba984a9ddecce4194cdb391766b005, type: 3}
       propertyPath: m_LocalPosition.y

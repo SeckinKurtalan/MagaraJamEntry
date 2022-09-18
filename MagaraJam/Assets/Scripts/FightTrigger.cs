@@ -42,7 +42,6 @@ public class FightTrigger : MonoBehaviour
                     foreach (GameObject road in roads)
                     {
                         road.SetActive(true);
-                        road.GetComponent<Animator>().SetTrigger("roadActive");
 
                     }
                 }
