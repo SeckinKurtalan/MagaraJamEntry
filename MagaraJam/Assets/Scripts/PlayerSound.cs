@@ -57,7 +57,7 @@ public class PlayerSound : MonoBehaviour
     }
     public void GarrySound()
     {
-        int random = Random.Range(0, garrySound.Length);
+        int random = Random.Range(0, garrySound.Length - 1);
         audioSource.PlayOneShot(garrySound[random]);
     }
     public void VaseBreakSound()
