@@ -6,6 +6,7 @@ public class FightTrigger : MonoBehaviour
 {
     [SerializeField] GameObject fightArea;
     [SerializeField] AudioSource backgroundMusic;
+    [SerializeField] GameObject[] roads;
     bool isInFightArea;
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,10 @@ public class FightTrigger : MonoBehaviour
             fightArea.SetActive(true);
             backgroundMusic.Pause();
             isInFightArea = true;
+            foreach (GameObject road in roads)
+            {
+                road.SetActive(false);
+            }
         }
     }
 }
