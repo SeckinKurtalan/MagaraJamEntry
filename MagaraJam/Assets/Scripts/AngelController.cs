@@ -10,6 +10,7 @@ public class AngelController : MonoBehaviour
     [SerializeField] GameObject playerHead;
     [SerializeField] ParticleSystem particle;
     [SerializeField] AudioClip[] attackSound;
+    [SerializeField] AudioClip[] hitSound;
     [SerializeField] Animator anim;
     AudioSource audioSource;
     Enemy enemy;
@@ -84,13 +85,13 @@ public class AngelController : MonoBehaviour
     IEnumerator AttackTimer(Collider[] hitPlayer)
     {
         anim.SetTrigger("attack");
+        int random = Random.Range(0, hitSound.Length);
+        audioSource.PlayOneShot(hitSound[random]);
         yield return new WaitForSeconds(.5f);
         particle.Play();
         if (hitPlayer.Length > 0)
         {
             hitPlayer[0].GetComponent<PlayerHealth>().UpdateHealth(1);
-            Debug.Log(hitPlayer.Length);
-
         }
         isAttack = true;
         yield return new WaitForSeconds(1.5f);
