@@ -17,17 +17,17 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         soundSc = GetComponent<PlayerSound>();
         health = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
     }
     public void UpdateHealth(float damage)
     {
         soundSc.HurtSound();
         health -= damage;
+        healthBar.SetHealth(health);
         if (health <= 0)
         {
             Die();
         }
-        //healthBar.SetHealth(health);
         Physics.IgnoreLayerCollision(6, 3);
         StartCoroutine(ResetCollision());
     }
