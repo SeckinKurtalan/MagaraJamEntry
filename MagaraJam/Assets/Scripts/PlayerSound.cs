@@ -6,7 +6,8 @@ public class PlayerSound : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioSource walkSource;
-    [SerializeField] AudioClip[] attackSound;
+    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip punchSound;
     [SerializeField] AudioClip[] hurtSound;
     [SerializeField] AudioClip dieSound;
     [SerializeField] AudioClip[] stoneWalkSound;
@@ -24,7 +25,11 @@ public class PlayerSound : MonoBehaviour
 
     public void AttackSound()
     {
-        audioSource.PlayOneShot(attackSound[Random.Range(0, attackSound.Length)]);
+        audioSource.PlayOneShot(attackSound);
+    }
+    public void PunchSound()
+    {
+        audioSource.PlayOneShot(punchSound);
     }
     public void HurtSound()
     {
