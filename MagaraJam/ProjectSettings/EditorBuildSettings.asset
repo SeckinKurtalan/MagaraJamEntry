@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheEndScene.unity
     guid: 2bd38df7ec49b6e45be5b94fd4ce46d3
+  - enabled: 1
+    path: Assets/Scenes/GaryDancingScene.unity
+    guid: 20a70c310c177b94b9bbb3be3178046f
   m_configObjects: {}
