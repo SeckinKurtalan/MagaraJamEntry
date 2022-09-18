@@ -5981,7 +5981,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: fileID: 3681790978099765340, guid: eb998dd884881294e8af83955adb56d5, type: 3}
+    - target: {fileID: 3681790978099765340, guid: eb998dd884881294e8af83955adb56d5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -8695,7 +8695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "20 Melek \xD6ld\xFCr"
+  m_text: "20 Koruyucu \xD6ld\xFCr"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -26468,7 +26468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7930551212775778320, guid: 2d77da2c13e1879439fbe7e16acd80b2, type: 3}
       propertyPath: m_text
-      value: '30 Npc tokatla: '
+      value: '30 Masum Tokatla: '
       objectReference: {fileID: 0}
     - target: {fileID: 7930551212775778320, guid: 2d77da2c13e1879439fbe7e16acd80b2, type: 3}
       propertyPath: m_fontSize
