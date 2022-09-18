@@ -24,9 +24,10 @@ public class PlayerHealth : MonoBehaviour
         soundSc.HurtSound();
         health -= damage;
         healthBar.SetHealth(health);
-        if (health <= 0)
+        if (health <= 3)
         {
             Die();
+
         }
         Physics.IgnoreLayerCollision(6, 3);
         StartCoroutine(ResetCollision());
