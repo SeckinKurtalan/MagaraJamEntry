@@ -107,7 +107,7 @@ public class GodMechanics : MonoBehaviour
     public void Update()
     {
         TouchStatusApplier();
-        //TouchStatusControl();
+        TouchStatusControl();
         
     }
 
@@ -153,17 +153,12 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level1.Play();
         godSound.lazerSoundPlay();
         animActive = true;
-        yield return new WaitForSecondsRealtime(1f);
-        if (redzoneTouchStatus)
-        {
-            GiveDamageToTheMainCharacter();
-        }
         yield return new WaitForSecondsRealtime(3f);
-        Redzone1.SetActive(false);
         //yield return new WaitForSecondsRealtime(5f);
         damageNotGiven = true;
         animActive = false;
         redzoneTouchStatus = false;
+        Redzone1.SetActive(false);
         //GodAttackLevel2();
     }
    
@@ -184,16 +179,12 @@ public class GodMechanics : MonoBehaviour
         shootingAnim3Level2.Play();
         shootingAnim4Level2.Play();
         godSound.lazerSoundPlay();
-        if (redzoneTouchStatus)
-        {
-            playerHealtScript.Die();
-        }
         animActive = true;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(3f);
         damageNotGiven = true;
         animActive = false;
+        redzoneTouchStatus = false;
         Redzone2.SetActive(false);
-        yield return new WaitForSecondsRealtime(4f);
         //GodAttackLevel3();
     }
 
@@ -229,8 +220,10 @@ public class GodMechanics : MonoBehaviour
             playerHealtScript.Die();
         }
         yield return new WaitForSeconds(1f);
-        level3Areas[random].SetActive(false);
         level3Areas[random].transform.Find("NukeExplosionFire").gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        level3Areas[random].SetActive(false);
+        redzoneTouchStatus = false;
     }
     
      IEnumerator GodPunchLevel4()
@@ -267,10 +260,12 @@ public class GodMechanics : MonoBehaviour
         {
             playerHealtScript.Die();
         }    
+        
         yield return new WaitForSeconds(1f);
-            level5Areas[random].SetActive(false);
-            level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(false);
-
+        level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        level5Areas[random].SetActive(false);
+        redzoneTouchStatus = false; 
         yield return new WaitForSeconds(6f);
     }
     
@@ -290,7 +285,7 @@ public class GodMechanics : MonoBehaviour
     {
         if (redzoneTouchStatus && damageNotGiven && animActive)
         {
-            GiveDamageToTheMainCharacter();
+            playerHealtScript.Die();
         }
     }
 
