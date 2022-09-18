@@ -12,6 +12,7 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] AudioClip[] stoneWalkSound;
     [SerializeField] AudioClip[] planeWalkSound;
     [SerializeField] AudioClip fallSound;
+    [SerializeField] AudioClip garrySound;
     private int i = 0; 
     // Start is called before the first frame update
     void Start()
@@ -51,5 +52,9 @@ public class PlayerSound : MonoBehaviour
     public void FallSound()
     {
         audioSource.PlayOneShot(fallSound);
+    }
+    public void GarrySound()
+    {
+        audioSource.PlayOneShot(garrySound);
     }
 }

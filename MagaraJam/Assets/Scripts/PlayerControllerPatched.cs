@@ -15,6 +15,7 @@ public class PlayerControllerPatched : MonoBehaviour
     [SerializeField] Transform swordPos;
     [SerializeField] Animator anim;
     float attackTime;
+    float garryTime;
     Rigidbody rb;
     PlayerSound soundSc;
     int isOnStone;
@@ -40,6 +41,11 @@ public class PlayerControllerPatched : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time > attackTime)
         {
             Attack();
+        }
+        if (Time.time > garryTime)
+        {
+            soundSc.GarrySound();
+            garryTime = Time.time + 15;
         }
 
     }
@@ -165,6 +171,7 @@ public class PlayerControllerPatched : MonoBehaviour
             isOnStone = 2;
         }
     }
+
     private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.tag == "Stone")
