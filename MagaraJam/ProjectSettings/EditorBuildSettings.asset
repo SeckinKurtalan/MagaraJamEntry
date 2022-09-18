@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/GodFight.unity
+    guid: cef87f729a5a39a4aa202dcca062e8cc
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 17bdabeb46ad63f488907a7ca22649cb
+  - enabled: 1
+    path: Assets/Scenes/TheEndScene.unity
+    guid: 2bd38df7ec49b6e45be5b94fd4ce46d3
   m_configObjects: {}
