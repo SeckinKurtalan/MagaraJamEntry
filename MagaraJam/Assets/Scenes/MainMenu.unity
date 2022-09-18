@@ -1195,6 +1195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3106279245886960365, guid: 6cce90220dd5fca4f999ec84f95706e4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d5b572cdc32e98a44baae7c0f1d0f963, type: 3}
     - target: {fileID: 3106279245886960366, guid: 6cce90220dd5fca4f999ec84f95706e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0

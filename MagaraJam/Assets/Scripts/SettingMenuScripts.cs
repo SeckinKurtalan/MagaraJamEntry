@@ -37,7 +37,7 @@ public class SettingMenuScripts : MonoBehaviour
     {
         changeLevel.SetActive(true);
         yield return new WaitForSeconds(.5f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(5);
 
     }
     public void ClickSound()
