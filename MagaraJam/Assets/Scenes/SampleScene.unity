@@ -7181,7 +7181,7 @@ PrefabInstance:
     - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8300000, guid: 997e8d0eada02f54aa5b900050ab8e3d, type: 3}
+      objectReference: {fileID: 8300000, guid: b22ce5187062d244dadfc4d5d6617053, type: 3}
     - target: {fileID: 2081130834711277577, guid: 532d9072bd239a649a98775189e5cff5, type: 3}
       propertyPath: hurtSound.Array.size
       value: 2
@@ -7567,7 +7567,7 @@ PrefabInstance:
     - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8300000, guid: 997e8d0eada02f54aa5b900050ab8e3d, type: 3}
+      objectReference: {fileID: 8300000, guid: b22ce5187062d244dadfc4d5d6617053, type: 3}
     - target: {fileID: 8689710520839161318, guid: 4049bd295e33bc349851ed4d228f4842, type: 3}
       propertyPath: hurtSound.Array.size
       value: 2
