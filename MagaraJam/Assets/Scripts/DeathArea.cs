@@ -8,7 +8,7 @@ public class DeathArea : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerHealthForGod>().Die();
+            other.gameObject.GetComponent<PlayerHealth>().Die();
         }
         else
         {
