@@ -238,7 +238,7 @@ public class PlayerControllerPatched : MonoBehaviour
     {
         if (other.gameObject.tag == "gapı")
         {
-            SceneManager.LoadScene("2");
+            SceneManager.LoadScene(2);
 
         }
     }
