@@ -107,7 +107,7 @@ public class GodMechanics : MonoBehaviour
     public void Update()
     {
         TouchStatusApplier();
-        TouchStatusControl();
+        //TouchStatusControl();
         
     }
 
@@ -153,9 +153,14 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level1.Play();
         godSound.lazerSoundPlay();
         animActive = true;
+        yield return new WaitForSecondsRealtime(1f);
+        if (redzoneTouchStatus)
+        {
+            GiveDamageToTheMainCharacter();
+        }
         yield return new WaitForSecondsRealtime(3f);
         Redzone1.SetActive(false);
-        yield return new WaitForSecondsRealtime(5f);
+        //yield return new WaitForSecondsRealtime(5f);
         damageNotGiven = true;
         animActive = false;
         redzoneTouchStatus = false;
@@ -179,6 +184,10 @@ public class GodMechanics : MonoBehaviour
         shootingAnim3Level2.Play();
         shootingAnim4Level2.Play();
         godSound.lazerSoundPlay();
+        if (redzoneTouchStatus)
+        {
+            playerHealtScript.Die();
+        }
         animActive = true;
         yield return new WaitForSecondsRealtime(2f);
         damageNotGiven = true;
@@ -217,7 +226,7 @@ public class GodMechanics : MonoBehaviour
         level3Areas[random].transform.Find("NukeExplosionFire").gameObject.SetActive(true);
         if (redzoneTouchStatus)
         {
-            GiveDamageToTheMainCharacter();
+            playerHealtScript.Die();
         }
         yield return new WaitForSeconds(1f);
         level3Areas[random].SetActive(false);
@@ -256,7 +265,7 @@ public class GodMechanics : MonoBehaviour
             level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(true);
         if (redzoneTouchStatus)
         {
-            GiveDamageToTheMainCharacter();
+            playerHealtScript.Die();
         }    
         yield return new WaitForSeconds(1f);
             level5Areas[random].SetActive(false);
@@ -273,7 +282,7 @@ public class GodMechanics : MonoBehaviour
 
     void GiveDamageToTheMainCharacter()
     {
-        playerHealtScript.UpdateHealth(1f);
+        playerHealtScript.health -= 1;
         damageNotGiven = false;
     }
 
