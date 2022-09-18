@@ -5,8 +5,12 @@ using UnityEngine.Events;
 public class GodMechanics : MonoBehaviour
 {
 
-    [SerializeField] GameObject[] level3Areas;
+    bool isGodDead = false;
     
+    [SerializeField] GameObject[] level3Areas;
+
+    [SerializeField] GameObject[] level5Areas;
+
     [SerializeField] PlayerHealth playerHealtScript;
     
     [SerializeField] GameObject god;
@@ -65,14 +69,46 @@ public class GodMechanics : MonoBehaviour
         shootingAnim2Level2.Stop();
         shootingAnim3Level2.Stop();
         shootingAnim4Level2.Stop();
-        Invoke("GodAttackLevel1", 4f);
+        InvokeRepeating("RandomAttack", 2f,5f);
+        
     }
 
 
+    void RandomAttack()
+    {
+        int random = Random.Range(0, 5);
+        if (random == 0)
+        {
+            GodAttackLevel1();
+        }
+        else if (random == 1)
+        {
+            GodAttackLevel2();
+        }
+        else if (random == 2)
+        {
+            GodAttackLevel3();
+        }
+        else if (random == 3)
+        {
+            GodAttackLevel4();
+        }
+        else if (random == 4)
+        {
+            GodAttackLevel5();
+        }
+    }
+    
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3f);
+    }
+    
     public void Update()
     {
         TouchStatusApplier();
         TouchStatusControl();
+        
     }
 
     public void GodAttackLevel1()
@@ -84,6 +120,21 @@ public class GodMechanics : MonoBehaviour
     public void GodAttackLevel2()
     {
         StartCoroutine(GodPunchLevel2());
+    }
+    
+    public void GodAttackLevel3()
+    {
+        StartCoroutine(GodPunchLevel3());
+    }
+    
+    public void GodAttackLevel4()
+    {
+        StartCoroutine(GodPunchLevel4());
+    }
+    
+    public void GodAttackLevel5()
+    {
+        StartCoroutine(GodPunchLevel5());
     }
     
     IEnumerator GodPunchLevel1()
@@ -107,11 +158,13 @@ public class GodMechanics : MonoBehaviour
         yield return new WaitForSecondsRealtime(5f);
         damageNotGiven = true;
         animActive = false;
-        GodAttackLevel2();
+        redzoneTouchStatus = false;
+        //GodAttackLevel2();
     }
    
     IEnumerator GodPunchLevel2()
     {
+        redzoneTouchStatus = false;
         Redzone2.SetActive(true);
         Color color = Level2Material.color;
         color.a = 0.8f;
@@ -127,18 +180,19 @@ public class GodMechanics : MonoBehaviour
         shootingAnim4Level2.Play();
         godSound.lazerSoundPlay();
         animActive = true;
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(2f);
         damageNotGiven = true;
         animActive = false;
         Redzone2.SetActive(false);
         yield return new WaitForSecondsRealtime(4f);
-        GodPunchLevel3();
+        //GodAttackLevel3();
     }
 
     
-    void GodPunchLevel3()
+    IEnumerator GodPunchLevel3()
     {
-        for(int i = 0; i < 4; i++)
+        redzoneTouchStatus = false;
+        for (int i = 0; i < 3; i++)
         {
             int random = Random.Range(0, level3Areas.Length);
             if(holdNumber == random)
@@ -152,7 +206,8 @@ public class GodMechanics : MonoBehaviour
             StartCoroutine(timer(random));
             holdNumber = random;
         }
-
+        yield return new WaitForSeconds(6f);
+        //GodAttackLevel4();
     }
     
     
@@ -166,8 +221,50 @@ public class GodMechanics : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         level3Areas[random].SetActive(false);
-
+        level3Areas[random].transform.Find("NukeExplosionFire").gameObject.SetActive(false);
     }
+    
+     IEnumerator GodPunchLevel4()
+    {
+        redzoneTouchStatus = false;
+        for (int i = 0; i < 6; i++)
+        {
+            int random = Random.Range(0, level3Areas.Length);
+            if (holdNumber == random)
+            {
+                while (holdNumber == random)
+                {
+                    random = Random.Range(0, level3Areas.Length);
+                }
+            }
+            level3Areas[random].SetActive(true);
+            StartCoroutine(timer(random));
+            holdNumber = random;
+        }
+        yield return new WaitForSeconds(6f);
+        //GodAttackLevel5();
+    }
+    
+    
+    IEnumerator GodPunchLevel5()
+    {
+        redzoneTouchStatus = false;
+        
+            int random = Random.Range(0, level5Areas.Length);
+            level5Areas[random].SetActive(true);
+            yield return new WaitForSeconds(2f);
+            level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(true);
+        if (redzoneTouchStatus)
+        {
+            GiveDamageToTheMainCharacter();
+        }    
+        yield return new WaitForSeconds(1f);
+            level5Areas[random].SetActive(false);
+            level5Areas[random].transform.Find("NukeConeExplosionFire").gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(6f);
+    }
+    
     
     void TouchStatusApplier()
     {
