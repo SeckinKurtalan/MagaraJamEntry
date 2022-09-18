@@ -14566,7 +14566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1224657072}
   smoothing: 2
-  offset: {x: 7.48, y: 49.14, z: -51.3}
+  offset: {x: 7.48, y: 40.66, z: -51.3}
 --- !u!1001 &965126834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22681,7 +22681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 172, y: 0}
+  m_AnchoredPosition: {x: 236, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1442032723
@@ -33192,7 +33192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 172, y: 0}
+  m_AnchoredPosition: {x: 236, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2129683305
