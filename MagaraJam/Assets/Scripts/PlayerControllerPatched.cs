@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerPatched : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class PlayerControllerPatched : MonoBehaviour
         }
         if (taskCounter == 2)
         {
-            gate.SetActive(false);
+            gate.GetComponent<Collider>().enabled = false;
         }
 
     }
@@ -176,11 +177,13 @@ public class PlayerControllerPatched : MonoBehaviour
         Collider[] enemies = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Enemy"));
         foreach (Collider enemy in enemies)
         {
+            soundSc.PunchSound();
             enemy.GetComponent<Enemy>().TakeDamage(1);
         }
         Collider[] npcler = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("NPC"));
         foreach (Collider npc in npcler)
         {
+            soundSc.PunchSound();
             npc.GetComponent<NpcMove>().TakeDamage(transform);
             NPCcount++;
             npcText.text = NPCcount.ToString();
@@ -188,6 +191,7 @@ public class PlayerControllerPatched : MonoBehaviour
         Collider[] vases = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Vase"));
         foreach (Collider vase in vases)
         {
+            soundSc.PunchSound();
             soundSc.VaseBreakSound();
             Vector3 direct = vase.transform.position - transform.position;
             vase.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
@@ -195,6 +199,7 @@ public class PlayerControllerPatched : MonoBehaviour
         Collider[] barels = Physics.OverlapSphere(swordPos.position, attackRange, LayerMask.GetMask("Barrel"));
         foreach (Collider barel in barels)
         {
+            soundSc.PunchSound();
             soundSc.BarrelSound();
             Vector3 direct = barel.transform.position - transform.position;
             barel.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
@@ -227,6 +232,14 @@ public class PlayerControllerPatched : MonoBehaviour
         if (other.gameObject.tag == "Plane")
         {
             isOnStone = 1;
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "gapı")
+        {
+            SceneManager.LoadScene("2");
+
         }
     }
 
