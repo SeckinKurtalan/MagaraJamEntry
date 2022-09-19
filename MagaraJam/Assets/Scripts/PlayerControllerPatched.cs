@@ -77,6 +77,7 @@ public class PlayerControllerPatched : MonoBehaviour
         if (taskCounter == 2)
         {
             gate.GetComponent<Collider>().enabled = false;
+            tasks[3].SetActive(true);
         }
 
     }
