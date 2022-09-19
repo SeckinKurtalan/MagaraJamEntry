@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   video: {fileID: 58535518}
   changeScene: {fileID: 228851106}
+  textImage: {fileID: 1991794333}
 --- !u!1 &228851106
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1991794334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -892,7 +893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -59}
   m_SizeDelta: {x: 546.0738, y: 752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991794335

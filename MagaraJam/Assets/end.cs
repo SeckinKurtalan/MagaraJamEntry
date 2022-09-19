@@ -8,6 +8,7 @@ public class end : MonoBehaviour
 {
     [SerializeField] VideoPlayer video;
     [SerializeField] GameObject changeScene;
+    [SerializeField] GameObject textImage;
 
     void Awake()
     {
@@ -24,7 +25,9 @@ public class end : MonoBehaviour
         yield return new WaitForSeconds(29f);
         video.Stop();
         changeScene.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
+        textImage.SetActive(true);
+        yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(1);
     }
 }
