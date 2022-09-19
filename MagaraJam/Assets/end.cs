@@ -6,20 +6,25 @@ using UnityEngine.Video;
 
 public class end : MonoBehaviour
 {
-    [SerializeField]  VideoPlayer video;
+    [SerializeField] VideoPlayer video;
+    [SerializeField] GameObject changeScene;
 
     void Awake()
     {
         video = GetComponent<VideoPlayer>();
         video.Play();
-        video.loopPointReached += CheckOver;
+        StartCoroutine(ChangeScene());
+
 
 
     }
 
-
-    void CheckOver(UnityEngine.Video.VideoPlayer vp)
+    IEnumerator ChangeScene()
     {
-        SceneManager.LoadScene(1);//the scene that you want to load after the video has ended.
+        yield return new WaitForSeconds(29f);
+        video.Stop();
+        changeScene.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(1);
     }
 }
