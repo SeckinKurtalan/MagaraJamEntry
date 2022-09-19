@@ -27,6 +27,8 @@ public class PlayerControllerPatched : MonoBehaviour
     Rigidbody rb;
     PlayerSound soundSc;
     int isOnStone;
+    bool isNpcDone;
+    bool isAngelDone;
 
     bool isWalk;
     int taskCounter;
@@ -64,20 +66,22 @@ public class PlayerControllerPatched : MonoBehaviour
             soundSc.GarrySound();
             garryTime = Time.time + 15;
         }
-        if (angelCount >= 20)
+        if (angelCount >= 20 && !isAngelDone)
         {
+            isAngelDone = true;
             taskCounter++;
             tasks[1].SetActive(false);
         }
-        if (NPCcount >= 30)
+        if (NPCcount >= 30 && !isNpcDone)
         {
+            isNpcDone = true;
             taskCounter++;
             tasks[0].SetActive(false);
         }
-        if (taskCounter == 2)
+        if (taskCounter >= 2)
         {
             gate.GetComponent<Collider>().enabled = false;
-            tasks[3].SetActive(true);
+            tasks[2].SetActive(true);
         }
 
     }
