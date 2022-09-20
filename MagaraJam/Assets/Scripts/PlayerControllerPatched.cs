@@ -18,10 +18,13 @@ public class PlayerControllerPatched : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] TextMeshProUGUI npcText;
     [SerializeField] TextMeshProUGUI angelText;
+    [SerializeField] TextMeshProUGUI vaseText;
     [SerializeField] GameObject[] tasks;
     [SerializeField] GameObject gate;
+
     float NPCcount;
     float angelCount;
+    float vaseCount;
     float attackTime;
     float garryTime;
     Rigidbody rb;
@@ -29,6 +32,7 @@ public class PlayerControllerPatched : MonoBehaviour
     int isOnStone;
     bool isNpcDone;
     bool isAngelDone;
+    bool isVaseDone;
 
     bool isWalk;
     int taskCounter;
@@ -42,6 +46,7 @@ public class PlayerControllerPatched : MonoBehaviour
         garryTime = 4;
         npcText.text = NPCcount.ToString();
         angelText.text = angelCount.ToString();
+        vaseText.text = vaseCount.ToString();
 
     }
     public void AngelCountFunc()
@@ -78,10 +83,16 @@ public class PlayerControllerPatched : MonoBehaviour
             taskCounter++;
             tasks[0].SetActive(false);
         }
-        if (taskCounter >= 2)
+        if (vaseCount >= 20 && !isVaseDone)
+        {
+            isVaseDone = true;
+            taskCounter++;
+            tasks[2].SetActive(false);
+        }
+        if (taskCounter >= 3)
         {
             gate.GetComponent<Collider>().enabled = false;
-            tasks[2].SetActive(true);
+            tasks[3].SetActive(true);
         }
 
     }
@@ -197,6 +208,8 @@ public class PlayerControllerPatched : MonoBehaviour
         foreach (Collider vase in vases)
         {
             soundSc.PunchSound();
+            vaseCount++;
+            vaseText.text = vaseCount.ToString();
             soundSc.VaseBreakSound();
             Vector3 direct = vase.transform.position - transform.position;
             vase.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
@@ -206,6 +219,8 @@ public class PlayerControllerPatched : MonoBehaviour
         {
             soundSc.PunchSound();
             soundSc.BarrelSound();
+            vaseCount++;
+            vaseText.text = vaseCount.ToString();
             Vector3 direct = barel.transform.position - transform.position;
             barel.GetComponent<Rigidbody>().AddForce(direct.normalized * 300, ForceMode.Impulse);
         }

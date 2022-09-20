@@ -84,9 +84,9 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -97,7 +97,7 @@ MonoBehaviour:
       y: 21
       width: 1071
       height: 256
-    m_Scale: {x: 0.23703703, y: 0.23703703}
+    m_Scale: {x: 0.25648147, y: 0.25648147}
     m_Translation: {x: 535.5, y: 128}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -105,12 +105,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -2259.1406
-      y: -540
-      width: 4518.2812
-      height: 1080
+      x: -2087.87
+      y: -499.0614
+      width: 4175.74
+      height: 998.1228
     m_MinimalGUI: 1
-  m_defaultScale: 0.23703703
+  m_defaultScale: 0.25648147
   m_LastWindowPixelSize: {x: 1071, y: 277}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 64
+  controlID: 4508
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 261
     height: 377
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -223,10 +223,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 369}
-      m_SelectedIDs: 32fd0000
-      m_LastClickedID: 64818
-      m_ExpandedIDs: e80dfeff3c0efeff3e0efeff5e10feff6810feff7210feff1a16feff5a6efeffd46ffeff02d5feff66d6feffbad6feffeed7feff10dafeff1adafeff26dafeffdcdffeff143bffffa23cffff38fbffffce5c0000fe5c00000a990000589b000040a20000a8a3000082a400000cd1000056ee000004f000008ef40000960e0100361c01000c2101008c240100
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: fcb9ffff38fbfffffa6200001e6600003268000068680000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 811
     height: 377
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -502,9 +502,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 997.19495, y: 740.63104, z: 0}
+    m_Target: {x: 1278.6875, y: -15.91921, z: 242.53479}
     speed: 2
-    m_Value: {x: 997.19495, y: 740.63104, z: 0}
+    m_Value: {x: 1278.6875, y: -15.91921, z: 242.53479}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -551,13 +551,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.18179633, y: -0.044232897, z: 0.008190497, w: 0.9823122}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.18179634, y: 0.044232897, z: -0.008190497, w: -0.98231226}
   m_Size:
-    m_Target: 454.89365
+    m_Target: 104.71213
     speed: 2
-    m_Value: 454.89365
+    m_Value: 104.71213
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -708,7 +708,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 2}
   m_Selected: 3
-  m_LastSelected: 0
+  m_LastSelected: 2
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -750,22 +750,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Music/Action
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Music/Action
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ASUS\Desktop\Unity_Projeler\Jamination\MagaraJamEntry\MagaraJam
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 96980000
-    m_LastClickedID: 39062
-    m_ExpandedIDs: 00000000a25d0000a45d0000a65d0000a85d0000aa5d0000ac5d0000ae5d0000b05d0000b25d0000b45d0000b65d000000ca9a3b
+    m_SelectedIDs: e4740000
+    m_LastClickedID: 29924
+    m_ExpandedIDs: 00000000e2740000e4740000e6740000e8740000ea740000ec740000ee740000f0740000f2740000f4740000f674000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -793,7 +793,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a25d0000a45d0000a65d0000a85d0000aa5d0000ac5d0000ae5d0000b05d0000b25d0000b45d0000b65d0000
+    m_ExpandedIDs: 00000000e2740000e4740000e6740000e8740000ea740000ec740000ee740000f0740000f2740000f4740000f674000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -818,9 +818,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 32fd0000
-    m_LastClickedInstanceID: 64818
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: cca1ffff
+    m_LastClickedInstanceID: -24116
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300006ca9ffff8e1f0000801f00000c740000526a00005a9400009e620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -879,7 +879,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 63840
+  m_LastSelectedObjectID: 25840
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -927,8 +927,8 @@ MonoBehaviour:
     y: 0
     width: 294
     height: 675
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -970,7 +970,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 19
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
