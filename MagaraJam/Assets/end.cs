@@ -15,7 +15,7 @@ public class end : MonoBehaviour
         video = GetComponent<VideoPlayer>();
         video.Play();
         StartCoroutine(ChangeScene());
-
+        Cursor.visible = false;
 
 
     }

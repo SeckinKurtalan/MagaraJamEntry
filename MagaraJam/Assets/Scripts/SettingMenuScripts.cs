@@ -14,6 +14,11 @@ public class SettingMenuScripts : MonoBehaviour
     [SerializeField] GameObject changeLevel;
     [SerializeField] Slider slider;
 
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
+
     public void SetFullScreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
